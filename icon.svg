@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="116" fill="#faf6ee"/>
+  <!-- isotipo: 3 pocillos en forma de P — el hueco inferior derecho es el
+       "agujero del pulgar" de las paletas clásicas -->
+  <circle cx="166" cy="166" r="66" fill="#cfdcc0"/>
+  <circle cx="346" cy="166" r="66" fill="#f6d3bd"/>
+  <circle cx="166" cy="346" r="66" fill="#c3d9e8"/>
+</svg>
