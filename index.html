@@ -125,6 +125,28 @@
   </div>
 </section>
 
+<section id="descargar">
+  <div class="wrap">
+    <p class="eyebrow">En todos tus dispositivos</p>
+    <h2>Ábrela donde estés.</h2>
+    <div class="downloads">
+      <a class="download" href="https://github.com/javiarenas/palet-site/releases/latest/download/Palet.dmg">
+        <span class="dl-ico"></span>
+        <span><strong>Descargar para Mac</strong><small>App de escritorio · .dmg</small></span>
+      </a>
+      <a class="download" href="https://app.palet.cloud" data-install>
+        <span class="dl-ico">⊞</span>
+        <span><strong>Instalar en Windows</strong><small>Desde tu navegador, como una app</small></span>
+      </a>
+      <a class="download" href="https://app.palet.cloud">
+        <span class="dl-ico">◔</span>
+        <span><strong>Móvil</strong><small>Instálala desde el navegador · apps en tiendas pronto</small></span>
+      </a>
+    </div>
+    <p class="dl-note">También funciona en cualquier navegador, sin instalar nada.</p>
+  </div>
+</section>
+
 <div class="cta-band">
   <span class="well" style="background:var(--sage);  width:150px;height:150px; left:-40px; bottom:-50px"></span>
   <span class="well" style="background:var(--rose);  width:100px;height:100px; right:8%;  top:-30px"></span>
@@ -145,5 +167,12 @@
   </div>
 </footer>
 
+<script>
+  let deferred;
+  window.addEventListener("beforeinstallprompt", (e) => { e.preventDefault(); deferred = e; });
+  document.querySelector("[data-install]")?.addEventListener("click", async (e) => {
+    if (deferred) { e.preventDefault(); deferred.prompt(); deferred = null; }
+  });
+</script>
 </body>
 </html>

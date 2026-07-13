@@ -216,3 +216,22 @@ footer .links { display: flex; gap: 22px; }
   .reveal { animation: none; opacity: 1; transform: none; }
   .hero .well { animation: none; }
 }
+
+
+/* ————— descargas ————— */
+#descargar { text-align: center; }
+.downloads { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
+.download {
+  display: flex; align-items: center; gap: 14px; text-decoration: none;
+  background: var(--paper); border: 1px solid var(--line); border-radius: 16px;
+  padding: 18px 24px; min-width: 240px; text-align: left;
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+.download:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.download .dl-ico {
+  width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
+  font-size: 22px; background: var(--cream-deep); flex-shrink: 0;
+}
+.download strong { display: block; font-size: 15.5px; }
+.download small { color: var(--ink-faint); font-size: 12.5px; }
+.dl-note { color: var(--ink-faint); font-size: 13.5px; margin-top: 24px; }
