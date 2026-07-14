@@ -4,8 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Precios — Palet</title>
-  <meta name="description" content="Empieza gratis con tu primera app. Atelier por 2,99 €/mes y Maestro para creadores que publican.">
+  <meta name="description" content="Empieza gratis con tu primera app. Atelier por 2,99 €/mes con hasta 10 apps, y Maestro sin límites por 19,99 €/mes.">
   <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <style>
+    .plan li.soon { color: var(--ink-faint, #a09a8c); }
+    .plan li.soon strong { font-weight: 600; }
+    .badge-soon {
+      display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: .02em;
+      background: var(--butter, #f4e3ae); color: #5a4b1e;
+      border-radius: 999px; padding: 1px 9px; margin-left: 4px; vertical-align: middle;
+    }
+  </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
@@ -55,7 +64,7 @@
       <div class="price">2,99 €<small> /mes</small></div>
       <p class="for">El taller completo, para el día a día.</p>
       <ul>
-        <li><strong>Hasta 20 apps</strong></li>
+        <li><strong>Hasta 10 apps</strong></li>
         <li><strong>200 MB</strong> de almacenamiento</li>
         <li>Conector para Claude, ChatGPT y Gemini</li>
         <li>Notificaciones y acceso multidispositivo</li>
@@ -68,13 +77,16 @@
       <span class="well-mini" style="background:var(--lilac)"></span>
       <h2>Maestro</h2>
       <div class="price">19,99 €<small> /mes</small></div>
-      <p class="for">Para creadores: publica tus apps y que el mundo las clone.</p>
+      <p class="for">Para quien vive en su paleta y no quiere pensar en límites.</p>
       <ul>
         <li><strong>Apps ilimitadas</strong></li>
-        <li><strong>1 GB</strong> de almacenamiento</li>
-        <li><strong>Publica en el catálogo</strong> y comparte tus apps</li>
+        <li><strong>2 GB</strong> de almacenamiento</li>
+        <li><strong>Imágenes y archivos</strong> en tus apps (hasta 5 MB por dato)</li>
         <li>Conector para Claude, ChatGPT y Gemini</li>
         <li>Soporte prioritario</li>
+        <li class="soon"><strong>Recordatorios programados</strong> <span class="badge-soon">Próximamente</span></li>
+        <li class="soon"><strong>Copias de seguridad</strong> <span class="badge-soon">Próximamente</span></li>
+        <li class="soon"><strong>Publicar en el catálogo</strong> <span class="badge-soon">Próximamente</span></li>
       </ul>
       <a class="btn ghost" href="https://app.palet.cloud">Empezar con Maestro</a>
     </div>
