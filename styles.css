@@ -235,3 +235,8 @@ footer .links { display: flex; gap: 22px; }
 .download strong { display: block; font-size: 15.5px; }
 .download small { color: var(--ink-faint); font-size: 12.5px; }
 .dl-note { color: var(--ink-faint); font-size: 13.5px; margin-top: 24px; }
+
+/* ——— reel de pincel (vídeo de marca 21:9) ——— */
+.reel { width: 100%; background: #faf6ee; line-height: 0; }
+.reel video { width: 100%; height: auto; display: block; aspect-ratio: 21 / 9; object-fit: cover; }
+.hero { padding-top: 48px; }
