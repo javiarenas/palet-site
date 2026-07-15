@@ -238,5 +238,7 @@ footer .links { display: flex; gap: 22px; }
 
 /* ——— reel de pincel (vídeo de marca 21:9) ——— */
 .reel { width: 100%; background: #faf6ee; line-height: 0; }
-.reel video { width: 100%; height: auto; display: block; aspect-ratio: 21 / 9; object-fit: cover; }
+/* Banner más estrecho: se recorta arriba/abajo (object-fit cover) y se encuadra
+   algo más abajo para comerse el espacio vacío superior y que se intuya el gesto. */
+.reel video { width: 100%; height: auto; display: block; aspect-ratio: 21 / 7; object-fit: cover; object-position: center 60%; }
 .hero { padding-top: 48px; }
