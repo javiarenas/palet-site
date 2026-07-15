@@ -35,31 +35,26 @@
 </section>
 
 <header class="hero">
-  <span class="well" style="background:var(--sage);   width:190px;height:190px; top:30px;   right:16%;  animation-delay:0s"></span>
-  <span class="well" style="background:var(--peach);  width:120px;height:120px; top:210px;  right:7%;   animation-delay:1.2s"></span>
-  <span class="well" style="background:var(--sky);    width:85px; height:85px;  top:110px;  right:33%;  animation-delay:2.1s"></span>
-  <span class="well" style="background:var(--lilac);  width:65px; height:65px;  top:330px;  right:26%;  animation-delay:0.7s"></span>
-  <div class="wrap">
-    <h1 class="reveal">Crea tus propias apps.<br>Tenlas siempre a mano.</h1>
-    <p class="sub reveal d1">Un viaje con tus reservas y PDFs, la dieta que te pasó tu nutri, tu técnica de estudio… Lo montas una vez con tu IA y lo tienes siempre a mano: con tus datos, notificaciones y en todos tus dispositivos.</p>
-    <div class="cta-row reveal d2">
-      <a class="btn big" href="https://app.palet.cloud">Crea tu paleta</a>
-      <a class="btn ghost" href="#como">Ver cómo funciona</a>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <h1 class="reveal">Crea tus propias apps.<br>Tenlas siempre a mano.</h1>
+      <p class="sub reveal d1">Un viaje con tus reservas y PDFs, la dieta que te pasó tu nutri, tu técnica de estudio… Lo montas una vez con tu IA y lo tienes siempre a mano: con tus datos, notificaciones y en todos tus dispositivos.</p>
+      <div class="cta-row reveal d2">
+        <a class="btn big" href="https://app.palet.cloud">Crea tu paleta</a>
+        <a class="btn ghost" href="#como">Ver cómo funciona</a>
+      </div>
+      <p class="connects reveal d3">Se conecta a Claude, ChatGPT y Gemini.</p>
     </div>
-    <p class="connects reveal d3">Se conecta a Claude, ChatGPT y Gemini.</p>
-
-    <div class="mock reveal d3" aria-hidden="true">
-      <div class="mock-bar"><i></i><i></i><i></i><span>app.palet.cloud</span></div>
-      <div class="mock-body">
-        <div class="greet">Buenos días, Lucía.</div>
-        <div class="mock-grid">
-          <div class="tile"><span class="dot" style="background:var(--sky)">🗺️</span>Viaje a Japón<small>Plan día a día · 3 PDFs</small></div>
-          <div class="tile"><span class="dot" style="background:var(--sage)">🥗</span>Mi dieta<small>Del nutri · lista de la compra</small></div>
-          <div class="tile"><span class="dot" style="background:var(--peach)">🗓️</span>Calendario de posts<small>Guiones y borradores</small></div>
-          <div class="tile"><span class="dot" style="background:var(--rose)">🍅</span>Pomodoro<small>Racha de foco 🔥</small></div>
-          <div class="tile"><span class="dot" style="background:var(--butter)">💪</span>Rutina de gym<small>La tabla de mi entrenador</small></div>
-          <div class="tile ghost-tile">+ Añadir app</div>
-        </div>
+    <div class="hero-carousel reveal d2" aria-hidden="true">
+      <div class="carousel" id="carousel">
+        <img src="shots/1-build-by-asking.png" class="slide active" alt="">
+        <img src="shots/2-your-world.png" class="slide" alt="">
+        <img src="shots/3-how-you-work.png" class="slide" alt="">
+      </div>
+      <div class="dots" id="dots">
+        <button class="dot active" data-i="0" aria-label="1"></button>
+        <button class="dot" data-i="1" aria-label="2"></button>
+        <button class="dot" data-i="2" aria-label="3"></button>
       </div>
     </div>
   </div>
@@ -177,6 +172,22 @@
   document.querySelector("[data-install]")?.addEventListener("click", async (e) => {
     if (deferred) { e.preventDefault(); deferred.prompt(); deferred = null; }
   });
+
+  // Carrusel del hero (capturas de la app)
+  (function () {
+    const slides = document.querySelectorAll("#carousel .slide");
+    const dots = document.querySelectorAll("#dots .dot");
+    if (!slides.length) return;
+    let i = 0, timer;
+    const show = (n) => {
+      i = (n + slides.length) % slides.length;
+      slides.forEach((s, k) => s.classList.toggle("active", k === i));
+      dots.forEach((d, k) => d.classList.toggle("active", k === i));
+    };
+    const start = () => (timer = setInterval(() => show(i + 1), 3800));
+    dots.forEach((d) => d.addEventListener("click", () => { clearInterval(timer); show(+d.dataset.i); start(); }));
+    start();
+  })();
 </script>
 </body>
 </html>
