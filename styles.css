@@ -154,7 +154,10 @@ section > .wrap > h2 { font-size: clamp(28px, 4vw, 40px); max-width: 560px; }
 .section-sub { color: var(--ink-soft); max-width: 520px; margin-top: 14px; }
 
 .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
-@media (max-width: 800px) { .steps { grid-template-columns: 1fr; } }
+.steps.cuatro { grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.steps.cuatro .step { padding: 22px; }
+@media (max-width: 1000px) { .steps.cuatro { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 800px) { .steps, .steps.cuatro { grid-template-columns: 1fr; } }
 .step {
   background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 28px;
 }
