@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Palet — Documentación</title>
+  <meta name="description" content="Cómo funciona Palet por dentro: el SDK que ven tus apps, dónde vive cada dato, qué puede y qué no puede hacer una app, y los límites que la protegen.">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body class="docs">
+
+<div class="wrap">
+  <nav>
+    <a class="brand" href="/">
+      <img src="icon.svg" alt="">
+      <span>palet</span>
+    </a>
+    <div class="nav-links">
+      <a href="/#como">Cómo funciona</a>
+      <a href="precios.html">Precios</a>
+      <a class="btn ghost" href="https://app.palet.cloud">Entrar</a>
+    </div>
+  </nav>
+</div>
+
+<div class="doc-layout">
+  <aside class="doc-nav">
+    <p class="doc-nav-title">Documentación</p>
+    <a href="#que-es">Qué es Palet</a>
+    <a href="#arquitectura">Cómo funciona por dentro</a>
+    <a href="#sdk">El SDK</a>
+    <a href="#datos">Dónde vive cada dato</a>
+    <a href="#widget">Widgets</a>
+    <a href="#red">Salir a internet</a>
+    <a href="#limites">Límites</a>
+    <a href="#no-hace">Lo que Palet no hace</a>
+  </aside>
+
+  <main class="doc-body">
+
+    <h1>Documentación</h1>
+    <p class="doc-lead">Esto es lo que hay debajo: qué ve tu app, dónde acaba cada dato y
+    qué no se puede hacer. Está escrito para quien va a leer el código que le genere su IA
+    y quiere saber contra qué está programando.</p>
+
+    <section id="que-es">
+      <h2>Qué es Palet</h2>
+      <p>Una mini-app de Palet es <strong>un único documento HTML</strong> con su CSS y su
+      JavaScript dentro. Nada de dependencias, ni build, ni ficheros sueltos.</p>
+      <p>Ese documento se ejecuta <strong>en el dispositivo de quien la usa</strong>, dentro
+      de un sandbox, con un objeto <code>window.palet</code> inyectado. Palet le pone lo que
+      un HTML suelto no tiene: memoria que sobrevive al cierre, sincronización entre
+      dispositivos, notificaciones, la posibilidad de compartirla con otras personas y un
+      widget en la pantalla de inicio.</p>
+      <p>Lo que no le pone es un servidor. Esa es la decisión de la que cuelga todo lo demás.</p>
+    </section>
+
+    <section id="arquitectura">
+      <h2>Cómo funciona por dentro</h2>
+      <p><strong>El servidor de Palet nunca ejecuta el código de tus apps.</strong> No hay
+      funciones, ni contenedores, ni procesos por usuario. El servidor hace tres cosas:
+      guarda la definición de cada app (su HTML), guarda sus datos, y comprueba quién puede
+      leer qué.</p>
+
+      <div class="doc-flow">
+        <div><span>1</span><b>Tu dispositivo</b><p>Descarga el HTML y lo ejecuta en un
+        sandbox. Aquí ocurre todo el cálculo: los totales, los filtros, los gráficos.</p></div>
+        <div><span>2</span><b>El SDK</b><p>Cuando la app quiere guardar o leer, llama a
+        <code>window.palet</code>, que habla con el servidor por HTTP.</p></div>
+        <div><span>3</span><b>El servidor</b><p>Recibe claves y valores JSON. Comprueba
+        permisos, aplica límites y escribe. Nunca interpreta lo que hay dentro.</p></div>
+      </div>
+
+      <p>De ahí salen dos consecuencias que conviene tener claras. La primera es de
+      seguridad: una app que se porte mal solo puede hacerle daño a la pestaña donde corre,
+      porque no tiene dónde ejecutarse en el servidor. La segunda es de diseño: si tu app
+      necesita hacer algo <em>mientras está cerrada</em>, no puede. No hay tareas
+      programadas ni procesos de fondo. Lo único que sigue vivo con la app cerrada son las
+      notificaciones que dejes programadas y las cuentas atrás del widget.</p>
+    </section>
+
+    <section id="sdk">
+      <h2>El SDK</h2>
+      <p>Todo lo que una app puede hacer pasa por <code>window.palet</code>. No hay más
+      superficie que esta.</p>
+
+      <table class="doc-tabla">
+        <thead><tr><th>Qué</th><th>Para qué</th></tr></thead>
+        <tbody>
+          <tr><td><code>palet.ready(cb)</code></td><td>Espera a tener contexto: quién la usa y qué app es.</td></tr>
+          <tr><td><code>palet.storage</code></td><td>Datos del grupo: los ve todo el que comparta la app.</td></tr>
+          <tr><td><code>palet.me</code></td><td>Datos de cada persona, que nadie más ve.</td></tr>
+          <tr><td><code>palet.storage.update(clave, fn)</code></td><td>Cambiar sin pisar lo que escribió otro a la vez.</td></tr>
+          <tr><td><code>palet.onChange(cb)</code></td><td>Avisa cuando alguien del grupo toca algo.</td></tr>
+          <tr><td><code>palet.widget.set({…})</code></td><td>Lo que la app enseña en la pantalla de inicio.</td></tr>
+          <tr><td><code>palet.notify(titulo, texto)</code></td><td>Notificación a quien la usa.</td></tr>
+          <tr><td><code>palet.connect(nombre).fetch(…)</code></td><td>Llamar a una API externa con un secreto que la app nunca ve.</td></tr>
+          <tr><td><code>palet.openUrl(url)</code></td><td>Abrir un enlace externo (https, mailto, tel, sms, geo).</td></tr>
+          <tr><td><code>palet.user</code> · <code>palet.app</code></td><td>Quién la está usando y qué app es.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="datos">
+      <h2>Dónde vive cada dato</h2>
+      <p>Es la decisión que más se equivoca al empezar, y la que peor sienta arreglar
+      después. Hay dos sitios y no se parecen en nada.</p>
+
+      <div class="doc-dos">
+        <div>
+          <h3><code>palet.storage</code> — del grupo</h3>
+          <p>Lo que existe una vez para todos: la lista de la compra, los gastos, los
+          restaurantes, el itinerario del viaje. Si compartes la app, todos ven lo mismo y
+          todos pueden escribirlo.</p>
+          <pre><code>await palet.storage.update('gastos', lista =>
+  [...(lista || []), nuevo]
+)</code></pre>
+          <p class="doc-nota">Usa siempre <code>update()</code> y no <code>set()</code>:
+          lee, aplica tu cambio y guarda solo si nadie tocó la clave mientras tanto. Con
+          <code>set()</code>, el último en escribir borra lo del anterior.</p>
+        </div>
+        <div>
+          <h3><code>palet.me</code> — de cada cual</h3>
+          <p>Lo que es de quien lo escribe: su récord en un juego, sus preferencias, su
+          progreso, lo que lleva marcado. Nadie más lo ve, ni siquiera quien creó la app.</p>
+          <pre><code>await palet.me.set('record', 4820)
+const mio = await palet.me.get('record')</code></pre>
+          <p class="doc-nota">El error clásico: guardar el récord de un juego en
+          <code>storage</code>. Al compartirlo, todo el mundo hereda la puntuación de otro.</p>
+        </div>
+      </div>
+
+      <p>¿Y si el dato es del grupo pero hay que saber de quién es cada cosa —un marcador,
+      un reparto de gastos—? Entonces va en <code>storage</code>, en un objeto indexado por
+      <code>palet.user.id</code>, con el nombre dentro para poder mostrarlo. Nunca uses el
+      nombre como clave: los nombres se repiten.</p>
+    </section>
+
+    <section id="widget">
+      <h2>Widgets</h2>
+      <p>Una app puede publicar lo que enseña en la pantalla de inicio del móvil. Se ve sin
+      abrir nada, y tocarlo abre esa app directamente.</p>
+      <pre><code>palet.widget.set({ title: 'Casa', value: '5 cosas', caption: 'leche, pan, café' })</code></pre>
+
+      <h3>Lo que depende del reloj se publica como fecha</h3>
+      <p>Si el dato es una cuenta atrás o un tiempo transcurrido, <strong>no publiques el
+      número</strong>: publica la fecha. El widget la cuenta solo, al segundo, sin que la
+      app se ejecute y sin gastar batería.</p>
+      <pre><code>palet.widget.set({ title: 'Pomodoro', until: fin })      // 24:59, 24:58…
+palet.widget.set({ title: 'Sin fumar', since: inicio })  // lo que llevas</code></pre>
+      <p>El formato se elige solo: reloj si es cosa de horas, lenguaje llano si son días o
+      semanas. Es la única forma de que el widget vaya al día sin abrir nada, porque la app
+      no se ejecuta mientras está cerrada.</p>
+
+      <h3>Del grupo, cuando el aviso es para todos</h3>
+      <p>Por defecto el widget es de cada persona. Con <code>{ shared: true }</code> es del
+      grupo, y entonces lo que publique uno le llega al resto en segundos, sin que abran
+      nada — la copia de su app no se ejecuta en su móvil, así que no podría enterarse de
+      otra forma.</p>
+      <pre><code>palet.widget.set({ title: 'Casa', value: '3 tareas' }, { shared: true })</code></pre>
+      <p class="doc-nota">Lo que pongas ahí lo ve todo el grupo en su pantalla de inicio.
+      Nada personal.</p>
+    </section>
+
+    <section id="red">
+      <h2>Salir a internet</h2>
+      <p>Por defecto una app <strong>no tiene red</strong>. Ni puede llamar a ningún sitio,
+      ni cargar recursos externos. Si necesita una API, hay que declarar sus orígenes al
+      crearla, y quien la use los aprueba la primera vez que la abre. La política de
+      seguridad del navegador solo deja pasar esos.</p>
+      <p>Con dos condiciones: la API tiene que aceptar peticiones desde un navegador
+      (CORS) y no requerir autenticación de servidor.</p>
+
+      <h3>APIs con secreto</h3>
+      <p><strong>Nunca metas una clave de API en el HTML de una app.</strong> Quedaría
+      escrita en la definición de la app y visible en el chat donde la creaste.</p>
+      <p>Para eso están las integraciones: el secreto se guarda cifrado una vez en Ajustes,
+      y la app lo usa sin verlo nunca.</p>
+      <pre><code>const r = await palet.connect('notion').fetch('/v1/pages', {
+  method: 'POST', body: { … }
+})</code></pre>
+      <p>La petición sale del servidor de Palet, que le añade el secreto. Así funcionan
+      también las APIs que no permiten CORS.</p>
+
+      <h3>Cuando la app se comparte</h3>
+      <p>La clave es de quien la dio de alta. Si compartes una app que usa una integración,
+      quien la use necesitaría la suya… salvo que declares qué puede hacer la app:</p>
+      <pre><code>integrations: [
+  { name: 'notion', allow: ['GET /v1/pages/*', 'POST /v1/pages'] }
+]</code></pre>
+      <p>Entonces se usa <strong>tu</strong> clave y la app funciona para todos, pero
+      <strong>solo para esas rutas</strong>. El límite no es un detalle: quien participa
+      puede abrir la consola del navegador y llamar al SDK a mano, así que sin acotarlo
+      estarías prestando tu clave para cualquier cosa contra ese servicio.</p>
+      <p class="doc-nota">Cada regla es <code>MÉTODO /ruta</code>. El <code>*</code> final
+      abre todo lo que cuelgue de ahí; sin él, la ruta tiene que coincidir entera. Pide lo
+      mínimo que la app necesite.</p>
+    </section>
+
+    <section id="limites">
+      <h2>Límites</h2>
+      <p>Están para que la app de otra persona no pueda estropearte la tuya, y para que
+      ninguna pueda tumbar el servicio. Se aplican en el servidor, que es el único sitio
+      donde tiene sentido aplicarlos: el JavaScript de una app se puede modificar, el
+      servidor no.</p>
+
+      <table class="doc-tabla">
+        <thead><tr><th></th><th>Boceto</th><th>Atelier</th><th>Maestro</th></tr></thead>
+        <tbody>
+          <tr><td>Apps propias</td><td>1</td><td>10</td><td>20</td></tr>
+          <tr><td>Almacenamiento</td><td>10 MB</td><td>200 MB</td><td>2 GB</td></tr>
+          <tr><td>Tamaño de un valor</td><td>256 KB</td><td>1 MB</td><td>5 MB</td></tr>
+        </tbody>
+      </table>
+
+      <table class="doc-tabla">
+        <tbody>
+          <tr><td>Llamadas por minuto y cuenta</td><td><strong>240</strong> desde las apps · <strong>60</strong> desde tu IA</td></tr>
+          <tr><td>Personas por app compartida</td><td><strong>25</strong>, contando a quien la creó</td></tr>
+          <tr><td>Apps que te pueden compartir</td><td><strong>10</strong></td></tr>
+          <tr><td>Vigencia de un enlace para unirse</td><td><strong>3 días</strong></td></tr>
+        </tbody>
+      </table>
+
+      <p>El límite por minuto es un cubo que se rellena solo: no importa el ritmo exacto,
+      importa que no se sostenga por encima del cupo. Una app que intente escribir cien
+      registros por segundo se topa con él en unos segundos, recibe un <code>429</code> y
+      avisa a quien la usa de que su app está haciendo el bruto.</p>
+      <p>Por eso conviene <strong>agrupar los datos en pocas claves</strong> en vez de una
+      por registro: una lista de la compra es una clave con un array dentro, no cincuenta
+      claves. Va más rápido, gasta menos cupo y ocupa menos.</p>
+    </section>
+
+    <section id="no-hace">
+      <h2>Lo que Palet no hace</h2>
+      <p>Conviene saberlo antes de pedirle a tu IA algo que no puede salir bien.</p>
+      <ul class="doc-lista">
+        <li><strong>No ejecuta código en el servidor.</strong> Nada de lógica de negocio, ni
+        procesos, ni tareas programadas. Todo el cálculo ocurre en el dispositivo mientras
+        la app está abierta.</li>
+        <li><strong>No hace nada con la app cerrada.</strong> No hay «cada noche a las 3
+        recalcula». Lo único que sobrevive son las notificaciones programadas y las cuentas
+        atrás del widget.</li>
+        <li><strong>No es una base de datos.</strong> Es un almacén de claves y valores
+        JSON. No hay consultas, ni índices, ni relaciones: se lee la clave entera y se
+        filtra en el dispositivo.</li>
+        <li><strong>No sirve para muchos usuarios.</strong> Está pensado para un grupo con
+        nombres y caras —una pareja, una casa, un grupo de amigos—, no para publicar algo
+        a mil desconocidos.</li>
+        <li><strong>No guarda secretos en la app.</strong> Cualquier clave que escribas en
+        el HTML es visible. Para eso están las integraciones.</li>
+        <li><strong>No corre binarios ni instala paquetes.</strong> Un HTML, su CSS y su
+        JavaScript. Sin npm, sin build, sin dependencias externas.</li>
+      </ul>
+      <p>Dicho de otra forma: Palet sirve para las utilidades que usa una persona o un grupo
+      pequeño todos los días. Para un producto con miles de usuarios y lógica en servidor,
+      necesitas otra cosa.</p>
+    </section>
+
+    <div class="doc-cta">
+      <h2>Tu primera app, gratis.</h2>
+      <p>Conecta tu IA y pídele lo que necesites.</p>
+      <a class="btn big" href="https://app.palet.cloud">Crear mi paleta</a>
+    </div>
+
+  </main>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p>© Palet · <a href="privacidad.html">Privacidad</a> · <a href="mailto:hola@palet.cloud">hola@palet.cloud</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
