@@ -36,6 +36,7 @@
     <a href="#sdk">El SDK</a>
     <a href="#datos">Dónde vive cada dato</a>
     <a href="#widget">Widgets</a>
+    <a href="#avisos">Avisos</a>
     <a href="#red">Salir a internet</a>
     <a href="#limites">Límites</a>
     <a href="#no-hace">Lo que Palet no hace</a>
@@ -44,9 +45,16 @@
   <main class="doc-body">
 
     <h1>Documentación</h1>
+    <p class="doc-version">
+      <strong>Versión 1.0.1</strong> · actualizado el 9 de agosto de 2026 ·
+      <a href="docs.md">en Markdown</a>
+    </p>
     <p class="doc-lead">Esto es lo que hay debajo: qué ve tu app, dónde acaba cada dato y
     qué no se puede hacer. Está escrito para quien va a leer el código que le genere su IA
     y quiere saber contra qué está programando.</p>
+    <p class="doc-lead" style="font-size:15px">Si eres una IA leyendo esto: hay una versión
+    en Markdown pensada para ti en <a href="docs.md">palet.cloud/docs.md</a>, y un índice en
+    <a href="llms.txt">llms.txt</a>.</p>
 
     <section id="que-es">
       <h2>Qué es Palet</h2>
@@ -98,7 +106,7 @@
           <tr><td><code>palet.storage.update(clave, fn)</code></td><td>Cambiar sin pisar lo que escribió otro a la vez.</td></tr>
           <tr><td><code>palet.onChange(cb)</code></td><td>Avisa cuando alguien del grupo toca algo.</td></tr>
           <tr><td><code>palet.widget.set({…})</code></td><td>Lo que la app enseña en la pantalla de inicio.</td></tr>
-          <tr><td><code>palet.notify(titulo, texto)</code></td><td>Notificación a quien la usa.</td></tr>
+          <tr><td><code>palet.notify(titulo, texto, { to })</code></td><td>Avisar a quien la usa o a alguien del núcleo.</td></tr>
           <tr><td><code>palet.connect(nombre).fetch(…)</code></td><td>Llamar a una API externa con un secreto que la app nunca ve.</td></tr>
           <tr><td><code>palet.openUrl(url)</code></td><td>Abrir un enlace externo (https, mailto, tel, sms, geo).</td></tr>
           <tr><td><code>palet.user</code> · <code>palet.app</code></td><td>Quién la está usando y qué app es.</td></tr>
@@ -165,6 +173,28 @@ palet.widget.set({ title: 'Sin fumar', since: inicio })  // lo que llevas</code>
       <pre><code>palet.widget.set({ title: 'Casa', value: '3 tareas' }, { shared: true })</code></pre>
       <p class="doc-nota">Lo que pongas ahí lo ve todo el grupo en su pantalla de inicio.
       Nada personal.</p>
+    </section>
+
+    <section id="avisos">
+      <h2>Avisos</h2>
+      <p>Una app puede avisar a quien la usa, y también a alguien del núcleo:</p>
+      <pre><code>palet.notify('Te toca', 'Ana te ha asignado la compra', { to: idDeLeo })
+palet.notify('Ya está', 'Lista terminada', { to: '*' })   // a todos menos a ti</code></pre>
+      <p>Solo llega a gente que participa en esa app. Y el servidor no decide nunca cuándo
+      avisar: lo decide la app, desde el dispositivo de quien la usa. Aquí no hay procesos
+      mirando si algo vence — si tu app necesita avisar de algo, tiene que estar abierta para
+      pedirlo.</p>
+
+      <h3>Se puede silenciar, y no te vas a enterar</h3>
+      <p>Cualquiera puede silenciar tu app desde su propia bandeja. Cuando lo hace, tus
+      avisos siguen aceptándose sin error, pero no llegan. Es a propósito: la decisión es de
+      quien recibe, y una app no debería poder saber si la han silenciado ni intentar
+      esquivarlo.</p>
+      <p class="doc-nota">Hay un tope diario por persona y por app. Está para que una app en
+      bucle no queme la confianza en las notificaciones de todas las demás.</p>
+      <p><strong>Avisa solo de lo que interrumpe</strong>: te han asignado algo, vence
+      mañana, te toca a ti. Si narras lo que pasa dentro de la app, te silencian — y con
+      ello pierdes también los avisos que sí importaban.</p>
     </section>
 
     <section id="red">

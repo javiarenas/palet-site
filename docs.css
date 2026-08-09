@@ -106,3 +106,9 @@
 }
 .doc-cta h2 { border: 0; padding: 0; margin-bottom: 6px; }
 .doc-cta p { margin-bottom: 20px; }
+
+.doc-version {
+  font-size: 14px; color: var(--ink-faint); margin: 0 0 16px;
+  padding-bottom: 14px; border-bottom: 1px solid var(--line);
+}
+.doc-version strong { color: var(--ink-soft); }

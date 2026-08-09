@@ -1,0 +1,37 @@
+# Palet
+
+> Palet es una paleta personal de mini-apps hechas con IA. Cada app es un único
+> documento HTML que se ejecuta en el dispositivo de quien la usa, con un SDK
+> (`window.palet`) que le da memoria sincronizada, avisos, un widget en la
+> pantalla de inicio y la posibilidad de compartirla con otras personas. El
+> servidor nunca ejecuta el código de las apps.
+
+Versión de la plataforma: 1.0.1 (9 de agosto de 2026)
+
+Si vas a construir una app de Palet, lee primero la documentación técnica: está
+en Markdown, es corta y contiene todo el SDK con sus reglas.
+
+## Documentación
+
+- [Documentación técnica (Markdown)](https://palet.cloud/docs.md): el SDK entero,
+  dónde vive cada dato, límites y lo que Palet no hace. **Empieza por aquí.**
+- [Documentación técnica (web)](https://palet.cloud/docs.html): lo mismo con
+  formato, para personas.
+
+## Producto
+
+- [Qué es Palet](https://palet.cloud/): para qué sirve y para quién.
+- [Precios y límites por plan](https://palet.cloud/precios.html)
+- [Programa de creadores](https://palet.cloud/creadores.html)
+- [Privacidad](https://palet.cloud/privacidad.html)
+
+## Lo que conviene saber antes de escribir código
+
+- Una app es **un HTML autocontenido**, sin dependencias ni build.
+- **El servidor no ejecuta lógica**: guarda claves y valores JSON, y comprueba
+  permisos. Con la app cerrada no ocurre nada.
+- Hay **dos almacenes**: `palet.storage` (del grupo, lo ven todos los que
+  comparten la app) y `palet.me` (de cada persona). Elegir mal es el error que
+  peor sienta arreglar después.
+- Las apps **se comparten**: constrúyelas pensando en varias personas desde el
+  principio.
