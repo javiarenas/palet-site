@@ -8,7 +8,7 @@
   <link rel="icon" href="icon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="docs.css">
   <link rel="stylesheet" href="diseno.css">
@@ -40,7 +40,6 @@
     <a href="#color">El color</a>
     <a href="#letra">La letra</a>
     <a href="#papel">El papel y el aire</a>
-    <a href="#glosario">Tres oficios, un idioma</a>
     <a href="#sentimental">Lo sentimental</a>
     <a href="#sistema">Dónde vive el sistema</a>
     <a href="#reglas">Reglas</a>
@@ -211,19 +210,6 @@
         <p class="especimen-muestra mono">palet.storage.update()</p>
         <p class="especimen-pie">JetBrains Mono · solo código y piezas técnicas</p>
       </div>
-      <h3>La J que estaba rota</h3>
-      <p>Fraunces trae un eje variable llamado <code>WONK</code> que activa letras
-      alternativas más excéntricas. Con él encendido, la <em>J</em> mayúscula sale con la cola
-      torcida, y en un wordmark leído mil veces no parece un rasgo de carácter: parece un
-      defecto de renderizado.</p>
-      <div class="jotas">
-        <div class="jota rota"><span>Jj</span><small>WONK 1</small></div>
-        <div class="jota buena"><span>Jj</span><small>WONK 0 · el nuestro</small></div>
-      </div>
-      <p>Se apaga en toda la marca, junto con <code>SOFT</code>, con una sola línea en el
-      <code>body</code>. Es la clase de decisión que define un sistema de diseño mejor que
-      cualquier declaración de principios: <strong>la personalidad se elige carácter a
-      carácter, y a veces consiste en quitar.</strong></p>
     </section>
 
     <section id="papel">
@@ -245,37 +231,6 @@
       <div class="cita">
         <p>El aire no es espacio sobrante.
         <em>Es lo que dice que aquí cabe una cosa más.</em></p>
-      </div>
-    </section>
-
-    <section id="glosario">
-      <h2>Tres oficios, un idioma</h2>
-      <p>La mezcla de vocabulario de esta página no es un juego. Cuando se puso a la vez la
-      pintura, el diseño de sistemas y los modelos de lenguaje sobre la misma mesa, resultó
-      que <strong>las tres disciplinas llevaban décadas usando las mismas palabras</strong>.
-      No hay que traducir nada: solo darse cuenta.</p>
-      <div class="tabla-scroll">
-      <table class="doc-tabla">
-        <thead><tr><th>Palabra</th><th>En pintura</th><th>En diseño</th><th>En IA</th></tr></thead>
-        <tbody>
-          <tr><td>paleta</td><td>los colores que tienes a mano</td><td>el set de color del sistema</td><td>el repertorio con el que responde</td></tr>
-          <tr><td>token</td><td><em>—</em></td><td>la unidad mínima con nombre</td><td>la unidad mínima de texto</td></tr>
-          <tr><td>temperatura</td><td>cálido o frío</td><td>el sesgo de la gama</td><td>cuánto se arriesga el modelo</td></tr>
-          <tr><td>contexto</td><td>lo que rodea al color y lo cambia</td><td>dónde vive el componente</td><td>lo que cabe en la ventana</td></tr>
-          <tr><td>capa</td><td>veladura sobre veladura</td><td>elevación y superficie</td><td>capa de la red</td></tr>
-          <tr><td>muestra</td><td>la prueba en una esquina</td><td>el <em>swatch</em></td><td><em>sample</em> de la distribución</td></tr>
-          <tr><td>ruido</td><td>el grano del papel</td><td>la textura de fondo</td><td>lo que se aparta de la señal</td></tr>
-          <tr><td>trazo</td><td>lo que deja el pincel</td><td><em>stroke</em>, el contorno</td><td>la generación, de una pasada</td></tr>
-        </tbody>
-      </table>
-      </div>
-      <p>De ahí sale el registro de toda la comunicación de Palet, y el de esta página: se
-      habla como se habla hoy —prompt, token, contexto— pero apoyado en un oficio de hace
-      quinientos años. Ninguna de las dos mitades es decoración de la otra.</p>
-      <div class="prompt">
-        <div><b>system</b><span>Eres un taller. Tienes ocho colores, papel crema y una letra con serifa.</span></div>
-        <div><b>user</b><span>Necesito llevar la cuenta de a quién le toca pagar la pista el jueves.</span></div>
-        <div><b>assistant</b><span>→ una app, un pocillo, un icono. Se queda en tu paleta.</span></div>
       </div>
     </section>
 
@@ -325,6 +280,11 @@
       partir de una frase tuya. Así que <strong>una parte del sistema de diseño está escrita
       en segunda persona y va dirigida a una máquina</strong>: hexadecimales, radios, tamaños
       de fuente y una plantilla de arranque que se puede pegar tal cual.</p>
+      <div class="prompt">
+        <div><b>system</b><span>Eres un taller. Tienes ocho colores, papel crema y una letra con serifa.</span></div>
+        <div><b>user</b><span>Necesito llevar la cuenta de a quién le toca pagar la pista el jueves.</span></div>
+        <div><b>assistant</b><span>→ una app, un pocillo, un icono. Se queda en tu paleta.</span></div>
+      </div>
       <div class="cita">
         <p>Antes, un manual de marca se le entregaba a un becario.
         <em>Ahora se le entrega a un modelo, y se cumple mejor.</em></p>
@@ -349,7 +309,6 @@
         <li class="no"><span><b>Nada de negro puro</b>, ni en texto, ni en sombras, ni en fondos.</span></li>
         <li class="no"><span><b>Nada de rojo de alarma.</b> El error es terracota <code>#b3543e</code>.</span></li>
         <li class="no"><span><b>Nada de pastel a fondo completo</b> ni de degradados de color.</span></li>
-        <li class="no"><span><b>Nada de <code>WONK</code>.</b> El eje va a 0 en toda la marca.</span></li>
         <li class="no"><span><b>Nada de estética de terminal</b> fuera de los bloques de código.</span></li>
       </ul>
     </section>

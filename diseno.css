@@ -138,26 +138,6 @@
 .especimen-muestra.mono { font-family: var(--font-mono); font-size: 22px; font-weight: 400; letter-spacing: 0; }
 .especimen-pie { font-size: 13.5px; color: var(--ink-faint); margin: 0; }
 
-/* La J que estaba rota: mismo carácter, dos ejes. */
-/* Con WONK encendido la J se sale de su caja por la izquierda: de eso va la
-   sección, así que hay que dejarle sitio en vez de recortarla. */
-.jotas { display: flex; gap: 26px; align-items: flex-end; margin: 18px 0 10px; padding-left: 10px; }
-.jota { text-align: center; }
-.jota span {
-  display: block;
-  font-family: var(--font-display);
-  font-size: 84px;
-  line-height: 1;
-  font-weight: 500;
-}
-.jota.rota span { font-variation-settings: "WONK" 1, "SOFT" 1; }
-.jota.buena span { font-variation-settings: "WONK" 0, "SOFT" 0; }
-.jota small { font-size: 12px; color: var(--ink-faint); font-family: var(--font-mono); }
-
-/* ——— glosario de las tres lenguas ——— */
-
-.doc-tabla td em { color: var(--ink-faint); font-style: normal; }
-.doc-tabla th:first-child { width: 118px; }
 
 /* ——— la trama, enseñada ——— */
 
