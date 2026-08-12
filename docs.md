@@ -1,6 +1,6 @@
 # Palet — documentación para construir mini-apps
 
-**Versión 1.0.1** · actualizado el 9 de agosto de 2026 · https://palet.cloud/docs.html
+**Versión 1.0.3** · actualizado el 12 de agosto de 2026 · https://palet.cloud/docs.html
 
 Esto está escrito para que lo lea una IA que va a construir una app de Palet.
 Si eres una persona, la versión con formato está en https://palet.cloud/docs.html

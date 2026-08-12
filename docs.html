@@ -22,6 +22,7 @@
     </a>
     <div class="nav-links">
       <a href="/#como">Cómo funciona</a>
+      <a href="diseno.html">Diseño</a>
       <a href="precios.html">Precios</a>
       <a class="btn ghost" href="https://app.palet.cloud">Entrar</a>
     </div>
@@ -46,8 +47,9 @@
 
     <h1>Documentación</h1>
     <p class="doc-version">
-      <strong>Versión 1.0.1</strong> · actualizado el 9 de agosto de 2026 ·
-      <a href="docs.md">en Markdown</a>
+      <strong>Versión 1.0.3</strong> · actualizado el 12 de agosto de 2026 ·
+      <a href="docs.md">en Markdown</a> ·
+      <a href="diseno.html">la justificación artística</a>
     </p>
     <p class="doc-lead">Esto es lo que hay debajo: qué ve tu app, dónde acaba cada dato y
     qué no se puede hacer. Está escrito para quien va a leer el código que le genere su IA
@@ -66,6 +68,10 @@
       dispositivos, notificaciones, la posibilidad de compartirla con otras personas y un
       widget en la pantalla de inicio.</p>
       <p>Lo que no le pone es un servidor. Esa es la decisión de la que cuelga todo lo demás.</p>
+      <p class="doc-nota">Que quepa en un solo documento no es solo una restricción técnica:
+      una app de Palet se lee entera de una sentada, como un boceto en una hoja. Por qué eso
+      importa, y por qué el resto se ve como se ve, en la
+      <a href="diseno.html">justificación artística</a>.</p>
     </section>
 
     <section id="arquitectura">
@@ -97,6 +103,7 @@
       <p>Todo lo que una app puede hacer pasa por <code>window.palet</code>. No hay más
       superficie que esta.</p>
 
+      <div class="tabla-scroll">
       <table class="doc-tabla">
         <thead><tr><th>Qué</th><th>Para qué</th></tr></thead>
         <tbody>
@@ -112,12 +119,15 @@
           <tr><td><code>palet.user</code> · <code>palet.app</code></td><td>Quién la está usando y qué app es.</td></tr>
         </tbody>
       </table>
+      </div>
     </section>
 
     <section id="datos">
       <h2>Dónde vive cada dato</h2>
       <p>Es la decisión que más se equivoca al empezar, y la que peor sienta arreglar
       después. Hay dos sitios y no se parecen en nada.</p>
+      <p class="doc-nota">Dicho en el idioma del taller: uno es el pocillo común, donde
+      todos mojan el pincel, y el otro es tu cuaderno.</p>
 
       <div class="doc-dos">
         <div>
@@ -153,6 +163,8 @@ const mio = await palet.me.get('record')</code></pre>
       <h2>Widgets</h2>
       <p>Una app puede publicar lo que enseña en la pantalla de inicio del móvil. Se ve sin
       abrir nada, y tocarlo abre esa app directamente.</p>
+      <p class="doc-nota">Un widget es la mancha de color que se reconoce desde el otro lado
+      de la habitación: un dato, grande, y nada más.</p>
       <pre><code>palet.widget.set({ title: 'Casa', value: '5 cosas', caption: 'leche, pan, café' })</code></pre>
 
       <h3>Lo que depende del reloj se publica como fecha</h3>
@@ -239,6 +251,7 @@ palet.notify('Ya está', 'Lista terminada', { to: '*' })   // a todos menos a ti
       donde tiene sentido aplicarlos: el JavaScript de una app se puede modificar, el
       servidor no.</p>
 
+      <div class="tabla-scroll">
       <table class="doc-tabla">
         <thead><tr><th></th><th>Boceto</th><th>Atelier</th><th>Maestro</th></tr></thead>
         <tbody>
@@ -247,7 +260,9 @@ palet.notify('Ya está', 'Lista terminada', { to: '*' })   // a todos menos a ti
           <tr><td>Tamaño de un valor</td><td>256 KB</td><td>1 MB</td><td>5 MB</td></tr>
         </tbody>
       </table>
+      </div>
 
+      <div class="tabla-scroll">
       <table class="doc-tabla">
         <tbody>
           <tr><td>Llamadas por minuto y cuenta</td><td><strong>240</strong> desde las apps · <strong>60</strong> desde tu IA</td></tr>
@@ -256,6 +271,7 @@ palet.notify('Ya está', 'Lista terminada', { to: '*' })   // a todos menos a ti
           <tr><td>Vigencia de un enlace para unirse</td><td><strong>3 días</strong></td></tr>
         </tbody>
       </table>
+      </div>
 
       <p>El límite por minuto es un cubo que se rellena solo: no importa el ritmo exacto,
       importa que no se sostenga por encima del cupo. Una app que intente escribir cien

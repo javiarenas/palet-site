@@ -1,0 +1,194 @@
+/* Diseño — la justificación artística.
+
+   Hereda la retícula de docs.css: es la misma casa. Lo que añade son las
+   piezas que solo tienen sentido aquí (muestras de color, especímenes,
+   bloques de prompt) y un guiño constante: los títulos llevan sus
+   almohadillas de Markdown y las citas su «>», porque esta página habla de
+   pintura en el idioma en el que hoy se escriben las cosas. */
+
+:root { --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace; }
+
+/* ——— los títulos, como se escriben ——— */
+
+.doc-body h2::before,
+.doc-body h3::before {
+  font-family: var(--font-mono);
+  color: var(--ink-faint);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.doc-body h2::before { content: "## "; font-size: 0.72em; }
+.doc-body h3::before { content: "### "; font-size: 0.74em; }
+
+/* ——— la cita, con su símbolo delante ——— */
+
+.cita {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px;
+  margin: 22px 0;
+  padding: 2px 0;
+}
+.cita::before {
+  content: ">";
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--sage);
+  line-height: 1.3;
+}
+.cita p {
+  font-family: var(--font-display);
+  font-size: 19px;
+  line-height: 1.5;
+  color: var(--ink);
+  margin: 0;
+}
+.cita p em { font-style: italic; color: var(--ink-soft); }
+
+/* ——— bloque de conversación con la IA ——— */
+
+.prompt {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px 18px;
+  margin: 0 0 16px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.7;
+}
+.prompt div + div { margin-top: 10px; }
+.prompt b {
+  display: block;
+  color: var(--ink-faint);
+  font-weight: 400;
+  font-size: 11.5px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+.prompt span { color: var(--ink-soft); }
+
+/* ——— pocillos ——— */
+
+.pocillos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin: 22px 0 18px;
+}
+.pocillo { width: 92px; text-align: center; }
+.pocillo i {
+  display: block;
+  width: 62px;
+  height: 62px;
+  margin: 0 auto 8px;
+  border-radius: 50%;
+  box-shadow: inset 0 -6px 14px rgba(62, 51, 34, 0.07);
+}
+.pocillo b { display: block; font-size: 13px; font-weight: 600; }
+.pocillo code {
+  font-size: 11px !important;
+  background: none !important;
+  padding: 0 !important;
+  color: var(--ink-faint) !important;
+}
+
+/* El isotipo explicado: tres llenos y un hueco. */
+.isotipo {
+  display: grid;
+  grid-template-columns: repeat(2, 78px);
+  gap: 12px;
+  padding: 18px;
+  width: max-content;
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  margin: 20px 0;
+}
+.isotipo i { display: block; width: 78px; height: 78px; border-radius: 50%; }
+.isotipo .hueco {
+  border: 2px dashed var(--ink-faint);
+  opacity: 0.55;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-mono);
+  font-size: 26px;
+  color: var(--ink-faint);
+  box-sizing: border-box;
+}
+
+/* ——— espécimen tipográfico ——— */
+
+.especimen {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 20px 22px;
+  margin: 0 0 16px;
+}
+.especimen-muestra {
+  font-family: var(--font-display);
+  font-size: 46px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+  margin: 0 0 6px;
+}
+.especimen-muestra.sans { font-family: var(--font-body); font-size: 26px; font-weight: 400; letter-spacing: 0; }
+.especimen-muestra.mono { font-family: var(--font-mono); font-size: 22px; font-weight: 400; letter-spacing: 0; }
+.especimen-pie { font-size: 13.5px; color: var(--ink-faint); margin: 0; }
+
+/* La J que estaba rota: mismo carácter, dos ejes. */
+/* Con WONK encendido la J se sale de su caja por la izquierda: de eso va la
+   sección, así que hay que dejarle sitio en vez de recortarla. */
+.jotas { display: flex; gap: 26px; align-items: flex-end; margin: 18px 0 10px; padding-left: 10px; }
+.jota { text-align: center; }
+.jota span {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 84px;
+  line-height: 1;
+  font-weight: 500;
+}
+.jota.rota span { font-variation-settings: "WONK" 1, "SOFT" 1; }
+.jota.buena span { font-variation-settings: "WONK" 0, "SOFT" 0; }
+.jota small { font-size: 12px; color: var(--ink-faint); font-family: var(--font-mono); }
+
+/* ——— glosario de las tres lenguas ——— */
+
+.doc-tabla td em { color: var(--ink-faint); font-style: normal; }
+.doc-tabla th:first-child { width: 118px; }
+
+/* ——— la trama, enseñada ——— */
+
+.muestra-papel {
+  height: 96px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background-color: var(--cream);
+  background-image: radial-gradient(rgba(62, 51, 34, 0.025) 1px, transparent 1px);
+  background-size: 22px 22px;
+  margin: 0 0 8px;
+}
+
+/* ——— reglas: lo que sí y lo que no ——— */
+
+.reglas { list-style: none; padding: 0; margin: 0; }
+.reglas li {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 12px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+.reglas li:last-child { border-bottom: 0; }
+.reglas li::before {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  line-height: 1.5;
+}
+.reglas .si::before { content: "+"; color: #6f8a5a; }
+.reglas .no::before { content: "−"; color: var(--error, #b3543e); }
+.reglas b { color: var(--ink); font-weight: 600; }

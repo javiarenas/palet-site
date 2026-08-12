@@ -55,6 +55,10 @@ nav {
 .brand img { width: 34px; height: 34px; border-radius: 9px; }
 .brand span { font-family: var(--font-display); font-size: 24px; font-weight: 550; }
 .nav-links { display: flex; align-items: center; gap: 26px; font-size: 14.5px; }
+@media (max-width: 620px) {
+  nav { flex-wrap: wrap; gap: 12px 0; padding: 18px 0; }
+  .nav-links { width: 100%; flex-wrap: wrap; gap: 18px; font-size: 14px; }
+}
 .nav-links a { text-decoration: none; color: var(--ink-soft); }
 .nav-links a:hover { color: var(--ink); }
 
@@ -194,10 +198,11 @@ section > .wrap > h2 { font-size: clamp(28px, 4vw, 40px); max-width: 560px; }
 .cta-band .btn { position: relative; z-index: 1; }
 
 footer { padding: 36px 0 48px; }
+footer p { overflow-wrap: anywhere; }
 footer .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 footer, footer a { color: var(--ink-faint); font-size: 13.5px; text-decoration: none; }
 footer a:hover { color: var(--ink); }
-footer .links { display: flex; gap: 22px; }
+footer .links { display: flex; gap: 22px; flex-wrap: wrap; }
 
 /* ——— pricing ——— */
 
