@@ -3,177 +3,189 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Palet — Crea tus propias apps. Tenlas siempre a mano.</title>
-  <meta name="description" content="Pídele una app a tu IA y úsala para siempre: con memoria, notificaciones y en todos tus dispositivos. Palet se conecta a Claude, ChatGPT y Gemini.">
+  <title>Palet — La próxima app que te encante, hazla tú.</title>
+  <meta name="description" content="Para tus ideas, tus aficiones y tu manera de hacer las cosas. Crea tus propias apps con ayuda de tu IA, dales tu toque y llévalas contigo. Empieza gratis.">
   <link rel="icon" href="icon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <meta property="og:title" content="Palet — Crea tus propias apps">
-  <meta property="og:description" content="Tu paleta personal de utilidades creadas con IA: con memoria, notificaciones y en todos tus dispositivos.">
+  <link rel="stylesheet" href="home.css">
+  <link rel="canonical" href="https://palet.cloud/">
+  <meta property="og:title" content="Palet — La próxima app que te encante, hazla tú.">
+  <meta property="og:description" content="Crea una app para eso que te importa. Dale forma con ayuda de tu IA, hazla a tu manera y úsala cada día. Tu primera app, gratis.">
+  <meta property="og:type" content="website">
   <meta property="og:url" content="https://palet.cloud">
 </head>
-<body>
+<body class="home">
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
 
 <div class="wrap">
-  <nav>
+  <nav aria-label="Navegación principal">
     <a class="brand" href="/">
       <img src="icon.svg" alt="">
       <span>palet</span>
     </a>
     <div class="nav-links">
+      <a href="#ejemplos">Ideas para empezar</a>
       <a href="#como">Cómo funciona</a>
-      <a href="docs.html">Documentación</a>
-      <a href="diseno.html">Diseño</a>
       <a href="precios.html">Precios</a>
       <a class="btn ghost" href="https://app.palet.cloud">Entrar</a>
     </div>
   </nav>
 </div>
 
-<section class="reel">
-  <video src="pincel.mp4" autoplay muted loop playsinline preload="metadata"></video>
-</section>
-
+<main id="contenido">
 <header class="hero">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <h1 class="reveal">Crea tus propias apps.<br>Tenlas siempre a mano.</h1>
-      <p class="sub reveal d1">Un viaje con tus reservas y PDFs, la dieta que te pasó tu nutri, tu técnica de estudio… Lo montas una vez con tu IA y lo tienes siempre a mano: con tus datos, notificaciones y en todos tus dispositivos.</p>
+      <p class="eyebrow reveal">Un pequeño taller para tus apps</p>
+      <h1 class="reveal">La próxima app<br>que te encante,<br><em>hazla tú.</em></h1>
+      <p class="sub reveal d1">Para ese viaje, esa afición, esa forma tan tuya de organizarte. Crea tus propias apps con ayuda de tu IA y ve dándoles forma, hasta que se sientan tuyas.</p>
       <div class="cta-row reveal d2">
-        <a class="btn big" href="https://app.palet.cloud">Crea tu paleta</a>
-        <a class="btn ghost" href="#como">Ver cómo funciona</a>
+        <a class="btn big" href="https://app.palet.cloud">Empieza tu primera app <span aria-hidden="true">↗</span></a>
+        <a class="text-link" href="#ejemplos">Busca tu primera idea <span aria-hidden="true">↓</span></a>
       </div>
-      <p class="connects reveal d3">Se conecta a Claude, ChatGPT y Gemini.</p>
+      <p class="hero-note reveal d3">Tu primera app, gratis. Sin tarjeta. Sin saber programar.</p>
+      <p class="connects reveal d3">Conecta la IA que ya usas: Claude, ChatGPT o Gemini.</p>
     </div>
-    <div class="hero-carousel reveal d2" aria-hidden="true">
+    <div class="hero-carousel reveal d2" role="region" aria-label="Así se ven tus apps en Palet">
+      <p class="carousel-note">Hecho a tu manera. A mano cada día.</p>
       <div class="carousel" id="carousel">
-        <img src="shots/1-pidesela.png" class="slide active" alt="">
-        <img src="shots/2-tuya.png" class="slide" alt="">
-        <img src="shots/3-a-mano.png" class="slide" alt="">
+        <img src="shots/2-tuya.png" class="slide active" alt="Una paleta personal con apps para casa, Japón, pádel, foco, la compra y restaurantes." width="332" height="720" fetchpriority="high">
+        <img src="shots/1-pidesela.png" class="slide" alt="Ejemplo de creación: pides una app para los gastos de casa y aparece lista para usar en tu paleta." width="332" height="720" aria-hidden="true">
+        <img src="shots/3-a-mano.png" class="slide" alt="Ejemplos de widgets en la pantalla de inicio: pomodoro, casa, Japón, compra, pádel y foco." width="332" height="720" aria-hidden="true">
       </div>
-      <div class="dots" id="dots">
-        <button class="dot active" data-i="0" aria-label="1"></button>
-        <button class="dot" data-i="1" aria-label="2"></button>
-        <button class="dot" data-i="2" aria-label="3"></button>
+      <div class="dots" id="dots" aria-label="Elige una captura" hidden>
+        <button class="dot active" type="button" data-i="0" aria-label="Ver tu paleta de apps" aria-pressed="true"></button>
+        <button class="dot" type="button" data-i="1" aria-label="Ver cómo se crea una app" aria-pressed="false"></button>
+        <button class="dot" type="button" data-i="2" aria-label="Ver los widgets" aria-pressed="false"></button>
       </div>
     </div>
   </div>
 </header>
 
-<section id="como">
-  <div class="wrap">
-    <p class="eyebrow">Cómo funciona</p>
-    <h2>De una frase a una app tuya, en un minuto.</h2>
-    <div class="steps">
-      <div class="step">
-        <span class="num" style="background:var(--sage)">1</span>
-        <h3>Conecta tu IA</h3>
-        <p>Copia tu conector de Palet en Claude, ChatGPT o Gemini. Un enlace y un token: treinta segundos, una sola vez.</p>
-      </div>
-      <div class="step">
-        <span class="num" style="background:var(--peach)">2</span>
-        <h3>Pídele la app que necesitas</h3>
-        <p>Descríbela con tus palabras. Tu IA construye la app y aparece al instante en tu paleta.</p>
-        <div class="example">«Toma el PDF de mi dieta y hazme un plan de comidas por días con la lista de la compra de cada semana»</div>
-      </div>
-      <div class="step">
-        <span class="num" style="background:var(--sky)">3</span>
-        <h3>Úsala para siempre</h3>
-        <p>Con sus datos guardados en tu nube, notificaciones y acceso desde el móvil, el portátil o donde estés.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <p class="eyebrow">Por qué Palet</p>
-    <h2>Todo lo que una app necesita para vivir, sin que tú mantengas nada.</h2>
-    <div class="features">
-      <div class="feature">
-        <span class="ico" style="background:var(--mint)"><svg viewBox="0 0 256 256" width="24" height="24" aria-hidden="true"><path d="M240,124a48,48,0,0,1-32,45.27h0V176a40,40,0,0,1-80,0,40,40,0,0,1-80,0v-6.73h0a48,48,0,0,1,0-90.54V72a40,40,0,0,1,80,0,40,40,0,0,1,80,0v6.73A48,48,0,0,1,240,124Z" fill="#4e8f74" opacity="0.2"/><path d="M248,124a56.11,56.11,0,0,0-32-50.61V72a48,48,0,0,0-88-26.49A48,48,0,0,0,40,72v1.39a56,56,0,0,0,0,101.2V176a48,48,0,0,0,88,26.49A48,48,0,0,0,216,176v-1.41A56.09,56.09,0,0,0,248,124ZM88,208a32,32,0,0,1-31.81-28.56A55.87,55.87,0,0,0,64,180h8a8,8,0,0,0,0-16H64A40,40,0,0,1,50.67,86.27,8,8,0,0,0,56,78.73V72a32,32,0,0,1,64,0v68.26A47.8,47.8,0,0,0,88,128a8,8,0,0,0,0,16,32,32,0,0,1,0,64Zm104-44h-8a8,8,0,0,0,0,16h8a55.87,55.87,0,0,0,7.81-.56A32,32,0,1,1,168,144a8,8,0,0,0,0-16,47.8,47.8,0,0,0-32,12.26V72a32,32,0,0,1,64,0v6.73a8,8,0,0,0,5.33,7.54A40,40,0,0,1,192,164Zm16-52a8,8,0,0,1-8,8h-4a36,36,0,0,1-36-36V80a8,8,0,0,1,16,0v4a20,20,0,0,0,20,20h4A8,8,0,0,1,208,112ZM60,120H56a8,8,0,0,1,0-16h4A20,20,0,0,0,80,84V80a8,8,0,0,1,16,0v4A36,36,0,0,1,60,120Z" fill="#4e8f74" opacity="1"/></svg></span>
-        <h3>Memoria de verdad</h3>
-        <p>Cada app guarda sus datos en tu nube personal. Tu IA también puede leerlos y escribirlos: «añade este restaurante al plan de Japón».</p>
-      </div>
-      <div class="feature">
-        <span class="ico" style="background:var(--butter)"><svg viewBox="0 0 256 256" width="24" height="24" aria-hidden="true"><path d="M208,192H48a8,8,0,0,1-6.88-12C47.71,168.6,56,139.81,56,104a72,72,0,0,1,144,0c0,35.82,8.3,64.6,14.9,76A8,8,0,0,1,208,192Z" fill="#a08430" opacity="0.2"/><path d="M221.8,175.94C216.25,166.38,208,139.33,208,104a80,80,0,1,0-160,0c0,35.34-8.26,62.38-13.81,71.94A16,16,0,0,0,48,200H88.81a40,40,0,0,0,78.38,0H208a16,16,0,0,0,13.8-24.06ZM128,216a24,24,0,0,1-22.62-16h45.24A24,24,0,0,1,128,216ZM48,184c7.7-13.24,16-43.92,16-80a64,64,0,1,1,128,0c0,36.05,8.28,66.73,16,80Z" fill="#a08430" opacity="1"/></svg></span>
-        <h3>Notificaciones</h3>
-        <p>Tus apps te avisan: la comida de mañana, «hoy toca publicar», el descanso del pomodoro, lo que tú les pidas.</p>
-      </div>
-      <div class="feature">
-        <span class="ico" style="background:var(--rose)"><svg viewBox="0 0 256 256" width="24" height="24" aria-hidden="true"><path d="M200,64V80H176a16,16,0,0,0-16,16v80H40a16,16,0,0,1-16-16V64A16,16,0,0,1,40,48H184A16,16,0,0,1,200,64Z" fill="#c07d8d" opacity="0.2"/><path d="M224,72H208V64a24,24,0,0,0-24-24H40A24,24,0,0,0,16,64v96a24,24,0,0,0,24,24H152v8a24,24,0,0,0,24,24h48a24,24,0,0,0,24-24V96A24,24,0,0,0,224,72ZM40,168a8,8,0,0,1-8-8V64a8,8,0,0,1,8-8H184a8,8,0,0,1,8,8v8H176a24,24,0,0,0-24,24v72Zm192,24a8,8,0,0,1-8,8H176a8,8,0,0,1-8-8V96a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8Zm-96,16a8,8,0,0,1-8,8H88a8,8,0,0,1,0-16h40A8,8,0,0,1,136,208Zm80-96a8,8,0,0,1-8,8H192a8,8,0,0,1,0-16h16A8,8,0,0,1,216,112Z" fill="#c07d8d" opacity="1"/></svg></span>
-        <h3>En todos tus dispositivos</h3>
-        <p>Instálala en el mac, en Windows y en el móvil. Misma paleta, mismos datos, en todas partes.</p>
-      </div>
-      <div class="feature">
-        <span class="ico" style="background:var(--sky)"><svg viewBox="0 0 256 256" width="24" height="24" aria-hidden="true"><path d="M216,96V208a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V96a8,8,0,0,1,8-8H208A8,8,0,0,1,216,96Z" fill="#4a7a99" opacity="0.2"/><path d="M208,80H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM96,56a32,32,0,0,1,64,0V80H96ZM208,208H48V96H208V208Zm-68-56a12,12,0,1,1-12-12A12,12,0,0,1,140,152Z" fill="#4a7a99" opacity="1"/></svg></span>
-        <h3>Privado por diseño</h3>
-        <p>Cada app corre aislada en tu dispositivo y no puede hablar con nadie más. Nuestro servidor nunca ejecuta código: solo guarda lo tuyo.</p>
-      </div>
-      <div class="feature">
-        <span class="ico" style="background:var(--lilac)"><svg viewBox="0 0 256 256" width="24" height="24" aria-hidden="true"><path d="M185,127,127,185a24,24,0,0,1-33.94,0L71,162.91A24,24,0,0,1,71,129L129,71a24,24,0,0,1,33.94,0L185,93.09A24,24,0,0,1,185,127Z" fill="#7d63a8" opacity="0.2"/><path d="M237.66,18.34a8,8,0,0,0-11.32,0l-52.4,52.41-5.37-5.38a32.05,32.05,0,0,0-45.26,0L100,88.69l-6.34-6.35A8,8,0,0,0,82.34,93.66L88.69,100,65.37,123.31a32,32,0,0,0,0,45.26l5.38,5.37-52.41,52.4a8,8,0,0,0,11.32,11.32l52.4-52.41,5.37,5.38a32.06,32.06,0,0,0,45.26,0L156,167.31l6.34,6.35a8,8,0,0,0,11.32-11.32L167.31,156l23.32-23.31a32,32,0,0,0,0-45.26l-5.38-5.37,52.41-52.4A8,8,0,0,0,237.66,18.34Zm-116.29,161a16,16,0,0,1-22.62,0L76.69,157.25a16,16,0,0,1,0-22.62L100,111.31,144.69,156Zm57.94-57.94h0L156,144.69,111.31,100l23.32-23.31a16,16,0,0,1,22.62,0l22.06,22a16,16,0,0,1,0,22.63ZM88.57,35A8,8,0,0,1,103.43,29l8,20A8,8,0,0,1,96.57,55ZM24.57,93A8,8,0,0,1,35,88.57l20,8A8,8,0,0,1,49,111.43l-20-8A8,8,0,0,1,24.57,93ZM231.43,163a8,8,0,0,1-10.4,4.46l-20-8A8,8,0,1,1,207,144.57l20,8A8,8,0,0,1,231.43,163Zm-64,58.06A8,8,0,0,1,152.57,227l-8-20A8,8,0,0,1,159.43,201Z" fill="#7d63a8" opacity="1"/></svg></span>
-        <h3>Tu IA favorita</h3>
-        <p>Claude, ChatGPT o Gemini: Palet habla MCP, el estándar de conectores. Cambia de IA sin perder tus apps.</p>
-      </div>
-      <div class="feature">
-        <span class="ico" style="background:var(--sand)"><svg viewBox="0 0 256 256" width="24" height="24" aria-hidden="true"><path d="M176,112,74.34,213.66a8,8,0,0,1-11.31,0L42.34,193a8,8,0,0,1,0-11.31L144,80Z" fill="#98793f" opacity="0.2"/><path d="M248,152a8,8,0,0,1-8,8H224v16a8,8,0,0,1-16,0V160H192a8,8,0,0,1,0-16h16V128a8,8,0,0,1,16,0v16h16A8,8,0,0,1,248,152ZM56,72H72V88a8,8,0,0,0,16,0V72h16a8,8,0,0,0,0-16H88V40a8,8,0,0,0-16,0V56H56a8,8,0,0,0,0,16ZM184,192h-8v-8a8,8,0,0,0-16,0v8h-8a8,8,0,0,0,0,16h8v8a8,8,0,0,0,16,0v-8h8a8,8,0,0,0,0-16ZM219.31,80,80,219.31a16,16,0,0,1-22.62,0L36.68,198.63a16,16,0,0,1,0-22.63L176,36.69a16,16,0,0,1,22.63,0l20.68,20.68A16,16,0,0,1,219.31,80Zm-54.63,32L144,91.31l-96,96L68.68,208ZM208,68.69,187.31,48l-32,32L176,100.69Z" fill="#98793f" opacity="1"/></svg></span>
-        <h3>Cero mantenimiento</h3>
-        <p>Ni servidores, ni bases de datos, ni logins que programar. Tú pides; de lo demás nos ocupamos nosotros.</p>
-      </div>
-    </div>
-  </div>
-</section>
+<figure class="reel">
+  <video src="pincel.mp4" muted loop playsinline preload="metadata" controls aria-label="Un pincel da forma a los colores de la paleta de Palet"></video>
+  <figcaption>
+    <span>Una idea. Un primer boceto. Algo tuyo.</span>
+    <button class="reel-toggle" type="button" hidden>Pausar vídeo</button>
+  </figcaption>
+</figure>
 
 <section id="ejemplos">
   <div class="wrap">
-    <p class="eyebrow">Qué se hace con esto</p>
-    <h2>Lo que nadie ha escrito porque solo te pasa a ti.</h2>
-    <p class="lead">Las apps que existen sirven para lo que le pasa a mucha gente. Lo demás
-    —tu manera de llevar la casa, el viaje que estáis montando, el grupo del sábado— lo
-    acabas apañando con notas sueltas y un grupo de WhatsApp.</p>
+    <p class="eyebrow">Sigue ese «¿y si…?»</p>
+    <h2>Empieza por algo<br>que te <em>importe.</em></h2>
+    <p class="lead">No hace falta una gran idea. Basta con algo que te apetezca hacer a tu manera. Ese «me gustaría tener una app para…» ya es un buen comienzo.</p>
 
     <div class="usos">
-      <article>
-        <h3>Para ti</h3>
-        <p>Dónde se te va el tiempo, la técnica de estudio que sigues, el plan que te pasó tu
-        nutricionista con la compra de cada semana.</p>
-        <span class="uso-ej">«Un contador por tarea para saber qué imputar el viernes»</span>
+      <article style="--idea-color:var(--peach)">
+        <span class="idea-label">01 / Ese plan que te ilusiona</span>
+        <h3>El viaje empieza cuando lo imaginas.</h3>
+        <p>Los sitios que vas descubriendo, las recomendaciones de tus amigos, la ruta que cambia con cada conversación. Un lugar para ir dándole forma.</p>
+        <p class="uso-ej">«Hazme una app para organizar mi viaje a Japón, con un plan por días y los sitios que quiero visitar»</p>
       </article>
-      <article>
-        <h3>En pareja</h3>
-        <p>El viaje con sus reservas y sus PDFs, los restaurantes a los que queréis ir y los
-        que ya habéis puntuado, los sitios donde habéis estado.</p>
-        <span class="uso-ej">«Los restaurantes que nos recomiendan, con nota y quién lo dijo»</span>
+      <article style="--idea-color:var(--sage)">
+        <span class="idea-label">02 / Tu manera de avanzar</span>
+        <h3>Un poco más cerca, cada día.</h3>
+        <p>Aprender un idioma, preparar un examen, sacar tiempo para practicar. Hazte una herramienta que siga tu ritmo y te deje ver lo que llevas recorrido.</p>
+        <p class="uso-ej">«Quiero una app para practicar francés, guardar las palabras nuevas y repasar las que más me cuestan»</p>
       </article>
-      <article>
-        <h3>En casa</h3>
-        <p>Los gastos y quién ha puesto qué, la compra que ve todo el mundo, y lo que hay que
-        renovar antes de que se pase.</p>
-        <span class="uso-ej">«Avísame del seguro del coche tres semanas antes»</span>
+      <article style="--idea-color:var(--lilac)">
+        <span class="idea-label">03 / Eso en lo que te perderías horas</span>
+        <h3>Tu afición merece su propio rincón.</h3>
+        <p>Las recetas que vas afinando, los libros que te dejan pensando, las notas de tu huerto. Ponle tus categorías, tus detalles y tus manías.</p>
+        <p class="uso-ej">«Un recetario con mis versiones de cada plato y notas de lo que cambiaría la próxima vez»</p>
       </article>
-      <article>
-        <h3>Con los tuyos</h3>
-        <p>El grupo del pádel, la peña del fútbol, la gente del trabajo: quién se apunta, quién
-        reserva y a quién le toca pagar.</p>
-        <span class="uso-ej">«Quién juega el jueves y cuánto sale la pista por cabeza»</span>
+      <article style="--idea-color:var(--sky)">
+        <span class="idea-label">04 / Algo para los tuyos</span>
+        <h3>Qué gusto decir «os he hecho esto».</h3>
+        <p>Una lista para casa, los planes del grupo, los gastos de una escapada. También puedes crear algo que os venga bien a todos.</p>
+        <p class="uso-ej">«Una app para los gastos del viaje, donde cada uno apunte lo que ha pagado y veamos cómo repartirlo»</p>
       </article>
     </div>
 
-    <p class="usos-pie">Todas se comparten: quien la usa contigo la abre igual, con los mismos
-    datos, sin instalar nada.</p>
+    <p class="usos-pie">Puedes compartir tus apps con Atelier o Maestro. Quien las recibe puede usarlas con una cuenta gratuita. <a href="precios.html">Ver planes <span aria-hidden="true">↗</span></a></p>
+  </div>
+</section>
+
+<section id="como">
+  <div class="wrap">
+    <p class="eyebrow">Cómo funciona</p>
+    <h2>Se empieza con un boceto.<br>Se hace tuyo <em>probando.</em></h2>
+    <p class="lead">No tienes que tenerlo todo pensado. Empieza con lo esencial y cambia lo que haga falta al usarlo.</p>
+    <div class="steps">
+      <div class="step">
+        <span class="num" style="background:var(--sage)">1</span>
+        <h3>Prepara tu paleta</h3>
+        <p>Crea tu cuenta y conecta Claude, ChatGPT o Gemini con la guía de Ajustes. Lo haces una vez y ya tienes dónde guardar tus creaciones.</p>
+        <a class="step-link" href="https://app.palet.cloud/settings">Conectar mi IA <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="step">
+        <span class="num" style="background:var(--peach)">2</span>
+        <h3>Dale una primera forma</h3>
+        <p>Cuéntale a tu IA qué quieres hacer y cómo te lo imaginas. Construirá una app que podrás abrir en Palet.</p>
+        <div class="example">«Crea en mi Palet un recetario para guardar los platos que cocino y mis notas»</div>
+      </div>
+      <div class="step">
+        <span class="num" style="background:var(--sky)">3</span>
+        <h3>Prueba. Ajusta. Hazla tuya.</h3>
+        <p>Ábrela, úsala y fíjate en lo que echas de menos. Puedes seguir pidiendo cambios a tu IA: cada detalle es una decisión tuya.</p>
+        <div class="example">«Añade una sección para las recetas de mi abuela. Y pon la letra un poco más grande»</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contigo">
+  <div class="wrap">
+    <p class="eyebrow">Del boceto a tu día a día</p>
+    <h2>Lo bonito es hacerlo.<br>Y después, <em>usarlo.</em></h2>
+    <p class="lead">En Palet, tus apps tienen un lugar donde vivir y guardar sus datos. Tú puedes seguir pensando en qué quieres hacer con ellas.</p>
+    <div class="features">
+      <div class="feature">
+        <span class="ico" style="background:var(--mint)"><svg viewBox="0 0 256 256" width="24" height="24" aria-hidden="true"><path d="M240,124a48,48,0,0,1-32,45.27h0V176a40,40,0,0,1-80,0,40,40,0,0,1-80,0v-6.73h0a48,48,0,0,1,0-90.54V72a40,40,0,0,1,80,0,40,40,0,0,1,80,0v6.73A48,48,0,0,1,240,124Z" fill="#4e8f74" opacity="0.2"/><path d="M248,124a56.11,56.11,0,0,0-32-50.61V72a48,48,0,0,0-88-26.49A48,48,0,0,0,40,72v1.39a56,56,0,0,0,0,101.2V176a48,48,0,0,0,88,26.49A48,48,0,0,0,216,176v-1.41A56.09,56.09,0,0,0,248,124ZM88,208a32,32,0,0,1-31.81-28.56A55.87,55.87,0,0,0,64,180h8a8,8,0,0,0,0-16H64A40,40,0,0,1,50.67,86.27,8,8,0,0,0,56,78.73V72a32,32,0,0,1,64,0v68.26A47.8,47.8,0,0,0,88,128a8,8,0,0,0,0,16,32,32,0,0,1,0,64Zm104-44h-8a8,8,0,0,0,0,16h8a55.87,55.87,0,0,0,7.81-.56A32,32,0,1,1,168,144a8,8,0,0,0,0-16,47.8,47.8,0,0,0-32,12.26V72a32,32,0,0,1,64,0v6.73a8,8,0,0,0,5.33,7.54A40,40,0,0,1,192,164Zm16-52a8,8,0,0,1-8,8h-4a36,36,0,0,1-36-36V80a8,8,0,0,1,16,0v4a20,20,0,0,0,20,20h4A8,8,0,0,1,208,112ZM60,120H56a8,8,0,0,1,0-16h4A20,20,0,0,0,80,84V80a8,8,0,0,1,16,0v4A36,36,0,0,1,60,120Z" fill="#4e8f74" opacity="1"/></svg></span>
+        <h3>Retoma donde lo dejaste</h3>
+        <p>Las recetas, las notas, lo que has ido avanzando. Tus apps guardan sus datos para que puedas volver a ellos.</p>
+      </div>
+      <div class="feature">
+        <span class="ico" style="background:var(--butter)"><svg viewBox="0 0 256 256" width="24" height="24" aria-hidden="true"><path d="M208,192H48a8,8,0,0,1-6.88-12C47.71,168.6,56,139.81,56,104a72,72,0,0,1,144,0c0,35.82,8.3,64.6,14.9,76A8,8,0,0,1,208,192Z" fill="#a08430" opacity="0.2"/><path d="M221.8,175.94C216.25,166.38,208,139.33,208,104a80,80,0,1,0-160,0c0,35.34-8.26,62.38-13.81,71.94A16,16,0,0,0,48,200H88.81a40,40,0,0,0,78.38,0H208a16,16,0,0,0,13.8-24.06ZM128,216a24,24,0,0,1-22.62-16h45.24A24,24,0,0,1,128,216ZM48,184c7.7-13.24,16-43.92,16-80a64,64,0,1,1,128,0c0,36.05,8.28,66.73,16,80Z" fill="#a08430" opacity="1"/></svg></span>
+        <h3>También pueden avisarte</h3>
+        <p>El final de una sesión de foco, una actualización. Dale a tu app una forma de llamar tu atención cuando lo necesites.</p>
+      </div>
+      <div class="feature">
+        <span class="ico" style="background:var(--rose)"><svg viewBox="0 0 256 256" width="24" height="24" aria-hidden="true"><path d="M200,64V80H176a16,16,0,0,0-16,16v80H40a16,16,0,0,1-16-16V64A16,16,0,0,1,40,48H184A16,16,0,0,1,200,64Z" fill="#c07d8d" opacity="0.2"/><path d="M224,72H208V64a24,24,0,0,0-24-24H40A24,24,0,0,0,16,64v96a24,24,0,0,0,24,24H152v8a24,24,0,0,0,24,24h48a24,24,0,0,0,24-24V96A24,24,0,0,0,224,72ZM40,168a8,8,0,0,1-8-8V64a8,8,0,0,1,8-8H184a8,8,0,0,1,8,8v8H176a24,24,0,0,0-24,24v72Zm192,24a8,8,0,0,1-8,8H176a8,8,0,0,1-8-8V96a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8Zm-96,16a8,8,0,0,1-8,8H88a8,8,0,0,1,0-16h40A8,8,0,0,1,136,208Zm80-96a8,8,0,0,1-8,8H192a8,8,0,0,1,0-16h16A8,8,0,0,1,216,112Z" fill="#c07d8d" opacity="1"/></svg></span>
+        <h3>Llévate lo que creas</h3>
+        <p>Dale forma en el portátil. Úsalo desde el móvil. Tus apps y sus datos te acompañan de una pantalla a otra.</p>
+      </div>
+      <div class="feature">
+        <span class="ico" style="background:var(--sky)"><svg viewBox="0 0 256 256" width="24" height="24" aria-hidden="true"><path d="M216,96V208a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V96a8,8,0,0,1,8-8H208A8,8,0,0,1,216,96Z" fill="#4a7a99" opacity="0.2"/><path d="M208,80H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM96,56a32,32,0,0,1,64,0V80H96ZM208,208H48V96H208V208Zm-68-56a12,12,0,1,1-12-12A12,12,0,0,1,140,152Z" fill="#4a7a99" opacity="1"/></svg></span>
+        <h3>Un espacio para lo tuyo</h3>
+        <p>Tus apps se ejecutan en un entorno aislado en tu dispositivo. Tú eliges cuáles compartir y con quién.</p>
+      </div>
+      <div class="feature">
+        <span class="ico" style="background:var(--lilac)"><svg viewBox="0 0 256 256" width="24" height="24" aria-hidden="true"><path d="M185,127,127,185a24,24,0,0,1-33.94,0L71,162.91A24,24,0,0,1,71,129L129,71a24,24,0,0,1,33.94,0L185,93.09A24,24,0,0,1,185,127Z" fill="#7d63a8" opacity="0.2"/><path d="M237.66,18.34a8,8,0,0,0-11.32,0l-52.4,52.41-5.37-5.38a32.05,32.05,0,0,0-45.26,0L100,88.69l-6.34-6.35A8,8,0,0,0,82.34,93.66L88.69,100,65.37,123.31a32,32,0,0,0,0,45.26l5.38,5.37-52.41,52.4a8,8,0,0,0,11.32,11.32l52.4-52.41,5.37,5.38a32.06,32.06,0,0,0,45.26,0L156,167.31l6.34,6.35a8,8,0,0,0,11.32-11.32L167.31,156l23.32-23.31a32,32,0,0,0,0-45.26l-5.38-5.37,52.41-52.4A8,8,0,0,0,237.66,18.34Zm-116.29,161a16,16,0,0,1-22.62,0L76.69,157.25a16,16,0,0,1,0-22.62L100,111.31,144.69,156Zm57.94-57.94h0L156,144.69,111.31,100l23.32-23.31a16,16,0,0,1,22.62,0l22.06,22a16,16,0,0,1,0,22.63ZM88.57,35A8,8,0,0,1,103.43,29l8,20A8,8,0,0,1,96.57,55ZM24.57,93A8,8,0,0,1,35,88.57l20,8A8,8,0,0,1,49,111.43l-20-8A8,8,0,0,1,24.57,93ZM231.43,163a8,8,0,0,1-10.4,4.46l-20-8A8,8,0,1,1,207,144.57l20,8A8,8,0,0,1,231.43,163Zm-64,58.06A8,8,0,0,1,152.57,227l-8-20A8,8,0,0,1,159.43,201Z" fill="#7d63a8" opacity="1"/></svg></span>
+        <h3>Sigue con tu IA</h3>
+        <p>Conecta Claude, ChatGPT o Gemini. Puedes seguir trabajando en tus apps aunque cambies de IA.</p>
+      </div>
+      <div class="feature">
+        <span class="ico" style="background:var(--sand)"><svg viewBox="0 0 256 256" width="24" height="24" aria-hidden="true"><path d="M176,112,74.34,213.66a8,8,0,0,1-11.31,0L42.34,193a8,8,0,0,1,0-11.31L144,80Z" fill="#98793f" opacity="0.2"/><path d="M248,152a8,8,0,0,1-8,8H224v16a8,8,0,0,1-16,0V160H192a8,8,0,0,1,0-16h16V128a8,8,0,0,1,16,0v16h16A8,8,0,0,1,248,152ZM56,72H72V88a8,8,0,0,0,16,0V72h16a8,8,0,0,0,0-16H88V40a8,8,0,0,0-16,0V56H56a8,8,0,0,0,0,16ZM184,192h-8v-8a8,8,0,0,0-16,0v8h-8a8,8,0,0,0,0,16h8v8a8,8,0,0,0,16,0v-8h8a8,8,0,0,0,0-16ZM219.31,80,80,219.31a16,16,0,0,1-22.62,0L36.68,198.63a16,16,0,0,1,0-22.63L176,36.69a16,16,0,0,1,22.63,0l20.68,20.68A16,16,0,0,1,219.31,80Zm-54.63,32L144,91.31l-96,96L68.68,208ZM208,68.69,187.31,48l-32,32L176,100.69Z" fill="#98793f" opacity="1"/></svg></span>
+        <h3>Dedícate a darle forma</h3>
+        <p>El espacio para guardar tus apps y sus datos ya está preparado. Te queda lo que importa: hacer que te sirvan.</p>
+      </div>
+    </div>
   </div>
 </section>
 
 <section id="widgets">
   <div class="wrap">
-    <p class="eyebrow">Novedad</p>
-    <h2>Tus apps en la pantalla de inicio.</h2>
-    <p class="lead">No un acceso a Palet: la app en sí, con su dato a la vista. Pon uno por cada
-    una y tendrás tu paleta repartida por la pantalla, como cualquier otra app del móvil.</p>
+    <p class="eyebrow">Un hueco en tu pantalla</p>
+    <h2>Hecho por ti.<br>A mano <em>cada día.</em></h2>
+    <p class="lead">Con los widgets de la app para iOS, puedes llevar lo que has creado a tu pantalla de inicio: tu sesión de foco, un dato de casa, la cuenta atrás de ese viaje.</p>
 
-    <div class="widgets-demo" aria-hidden="true">
+    <div class="widgets-demo" role="group" aria-label="Ejemplos de widgets">
       <div class="wdg">
         <span class="wdg-dot" style="background:var(--peach)"></span>
         <span class="wdg-title">Pomodoro</span>
@@ -183,22 +195,20 @@
       <div class="wdg">
         <span class="wdg-dot" style="background:var(--sage)"></span>
         <span class="wdg-title">Casa</span>
-        <strong class="wdg-val" style="color:#6f8a52">en 6 días</strong>
-        <span class="wdg-cap">Seguro del coche</span>
+        <strong class="wdg-val" style="color:#6f8a52">4 cosas</strong>
+        <span class="wdg-cap">en la lista de la compra</span>
       </div>
       <div class="wdg">
         <span class="wdg-dot" style="background:var(--rose)"></span>
         <span class="wdg-title">Japón</span>
         <strong class="wdg-val" style="color:#c07d8d">en 3 semanas</strong>
-        <span class="wdg-cap">salimos el 12 de mayo</span>
+        <span class="wdg-cap">cada vez más cerca</span>
       </div>
     </div>
 
     <div class="widget-notes">
-      <div><h3>Los relojes corren solos</h3><p>Una cuenta atrás no se queda parada esperando a
-      que abras nada: el widget la cuenta al segundo, sin gastar batería.</p></div>
-      <div><h3>Y avisan de lo de los demás</h3><p>En una app compartida, lo que apunte uno le
-      aparece al resto en su pantalla de inicio, sin que abran nada.</p></div>
+      <div><h3>Lo que te importa, de un vistazo</h3><p>El tiempo que queda, lo que llevas hecho, lo que viene. Cada app puede tener su propio espacio.</p></div>
+      <div><h3>Tu pantalla también puede ser tuya</h3><p>Elige qué apps quieres tener delante. Una pequeña colección de cosas que has hecho para ti.</p></div>
     </div>
   </div>
 </section>
@@ -206,18 +216,18 @@
 <section id="descargar">
   <div class="wrap">
     <p class="eyebrow">En todos tus dispositivos</p>
-    <h2>Ábrela donde estés.</h2>
+    <h2>Tu taller va contigo.</h2>
     <div class="downloads">
       <a class="download" href="https://github.com/javiarenas/palet-site/releases/latest/download/Palet.dmg">
-        <span class="dl-ico"></span>
+        <span class="dl-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="13" rx="2"/><path d="M8 21h8m-4-5v5"/></svg></span>
         <span><strong>Descargar para Mac</strong><small>App de escritorio · .dmg</small></span>
       </a>
       <a class="download" href="https://app.palet.cloud" data-install>
-        <span class="dl-ico">⊞</span>
+        <span class="dl-ico" aria-hidden="true">⊞</span>
         <span><strong>Instalar en Windows</strong><small>Desde tu navegador, como una app</small></span>
       </a>
       <a class="download" href="https://app.palet.cloud">
-        <span class="dl-ico">◔</span>
+        <span class="dl-ico" aria-hidden="true">◔</span>
         <span><strong>Móvil</strong><small>Instálala desde el navegador · apps en tiendas pronto</small></span>
       </a>
     </div>
@@ -228,15 +238,19 @@
 <div class="cta-band">
   <span class="well" style="background:var(--sage);  width:150px;height:150px; left:-40px; bottom:-50px"></span>
   <span class="well" style="background:var(--rose);  width:100px;height:100px; right:8%;  top:-30px"></span>
-  <h2>Tu primera app, gratis.</h2>
-  <p>Crea tu paleta en un minuto. Sin tarjeta.</p>
-  <a class="btn big" href="https://app.palet.cloud">Crea tu paleta</a>
+  <p class="eyebrow">La siguiente idea es tuya</p>
+  <h2>Eso que llevas tiempo imaginando.<br><em>Empieza a hacerlo.</em></h2>
+  <p>Algo pequeño. Algo útil. Algo que te haga ilusión abrir.<br>Tu primera app es gratis. Sin tarjeta.</p>
+  <a class="btn big" href="https://app.palet.cloud">Empieza tu primera app <span aria-hidden="true">↗</span></a>
 </div>
+</main>
 
 <footer>
   <div class="wrap">
     <a class="brand" href="/" style="gap:8px"><img src="icon.svg" alt="" style="width:24px;height:24px;border-radius:6px"><span style="font-size:17px">palet</span></a>
     <div class="links">
+      <a href="docs.html">Documentación</a>
+      <a href="diseno.html">Diseño</a>
       <a href="precios.html">Precios</a>
       <a href="creadores.html">Creadores</a> · <a href="llms.txt">Para IAs</a> · <a href="privacidad.html">Privacidad</a>
       <a href="https://app.palet.cloud">La app</a>
@@ -245,28 +259,6 @@
   </div>
 </footer>
 
-<script>
-  let deferred;
-  window.addEventListener("beforeinstallprompt", (e) => { e.preventDefault(); deferred = e; });
-  document.querySelector("[data-install]")?.addEventListener("click", async (e) => {
-    if (deferred) { e.preventDefault(); deferred.prompt(); deferred = null; }
-  });
-
-  // Carrusel del hero (capturas de la app)
-  (function () {
-    const slides = document.querySelectorAll("#carousel .slide");
-    const dots = document.querySelectorAll("#dots .dot");
-    if (!slides.length) return;
-    let i = 0, timer;
-    const show = (n) => {
-      i = (n + slides.length) % slides.length;
-      slides.forEach((s, k) => s.classList.toggle("active", k === i));
-      dots.forEach((d, k) => d.classList.toggle("active", k === i));
-    };
-    const start = () => (timer = setInterval(() => show(i + 1), 3800));
-    dots.forEach((d) => d.addEventListener("click", () => { clearInterval(timer); show(+d.dataset.i); start(); }));
-    start();
-  })();
-</script>
+<script src="home.js" defer></script>
 </body>
 </html>
