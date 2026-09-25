@@ -39,6 +39,7 @@
     <a href="#widget">Widgets</a>
     <a href="#avisos">Avisos</a>
     <a href="#red">Salir a internet</a>
+    <a href="#librerias">Librerías</a>
     <a href="#limites">Límites</a>
     <a href="#no-hace">Lo que Palet no hace</a>
   </aside>
@@ -47,7 +48,7 @@
 
     <h1>Documentación</h1>
     <p class="doc-version">
-      <strong>Versión 1.0.3</strong> · actualizado el 12 de agosto de 2026 ·
+      <strong>Versión 1.0.4</strong> · actualizado el 25 de septiembre de 2026 ·
       <a href="docs.md">en Markdown</a> ·
       <a href="diseno.html">la justificación artística</a>
     </p>
@@ -244,6 +245,29 @@ palet.notify('Ya está', 'Lista terminada', { to: '*' })   // a todos menos a ti
       mínimo que la app necesite.</p>
     </section>
 
+    <section id="librerias">
+      <h2>Librerías</h2>
+      <p>Una app no puede cargar scripts de ningún sitio: ni CDN ni ficheros sueltos. La
+      excepción son unas pocas librerías que <strong>sirve el propio Palet</strong>, con la
+      versión fijada. Se cargan con su ruta relativa exacta, que empieza por
+      <code>/libs/</code>; cualquier otra URL la bloquea el navegador y la app se queda en
+      blanco.</p>
+      <pre><code>&lt;script type="module"&gt;
+  import * as THREE from "/libs/three@0.186.1/three.module.js"
+&lt;/script&gt;
+
+&lt;script src="/libs/chart.js@4.5.1/chart.umd.min.js"&gt;&lt;/script&gt;</code></pre>
+      <p>Hoy son <strong>three</strong> (3D), <strong>chart.js</strong> y
+      <strong>d3</strong> (gráficas), <strong>dayjs</strong> (fechas) y
+      <strong>marked</strong> (Markdown). La lista al día, con ejemplos, está en
+      <code>app.palet.cloud/api/libs</code> y en la tool <code>list_libraries</code> del
+      conector.</p>
+      <p class="doc-nota">¿Por qué no cualquier CDN? Cargar un script ya es mandar una
+      petición a otro servidor, y su URL serviría para sacar datos de la app. Las que sirve
+      Palet no salen de casa, se guardan en caché para siempre y las añade Palet, no cada
+      app.</p>
+    </section>
+
     <section id="limites">
       <h2>Límites</h2>
       <p>Están para que la app de otra persona no pueda estropearte la tuya, y para que
@@ -301,7 +325,7 @@ palet.notify('Ya está', 'Lista terminada', { to: '*' })   // a todos menos a ti
         <li><strong>No guarda secretos en la app.</strong> Cualquier clave que escribas en
         el HTML es visible. Para eso están las integraciones.</li>
         <li><strong>No corre binarios ni instala paquetes.</strong> Un HTML, su CSS y su
-        JavaScript. Sin npm, sin build, sin dependencias externas.</li>
+        JavaScript. Sin npm ni build; como mucho, alguna de las librerías que sirve Palet.</li>
       </ul>
       <p>Dicho de otra forma: Palet sirve para las utilidades que usa una persona o un grupo
       pequeño todos los días. Para un producto con miles de usuarios y lógica en servidor,

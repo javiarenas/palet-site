@@ -1,6 +1,6 @@
 # Palet — documentación para construir mini-apps
 
-**Versión 1.0.3** · actualizado el 12 de agosto de 2026 · https://palet.cloud/docs.html
+**Versión 1.0.4** · actualizado el 25 de septiembre de 2026 · https://palet.cloud/docs.html
 
 Esto está escrito para que lo lea una IA que va a construir una app de Palet.
 Si eres una persona, la versión con formato está en https://palet.cloud/docs.html
@@ -9,8 +9,9 @@ Si eres una persona, la versión con formato está en https://palet.cloud/docs.h
 
 ## Qué es una app de Palet
 
-Un **único documento HTML** con su CSS y su JavaScript dentro. Sin dependencias,
-sin build, sin ficheros sueltos.
+Un **único documento HTML** con su CSS y su JavaScript dentro. Sin build ni
+ficheros sueltos. Lo único de fuera que puede cargar son las
+[librerías aprobadas](#librerías) que sirve el propio Palet.
 
 Se ejecuta **en el dispositivo de quien la usa**, dentro de un sandbox, con un
 objeto `window.palet` inyectado. El servidor de Palet **nunca ejecuta el código
@@ -163,6 +164,30 @@ autenticación de servidor. Para el resto, `palet.connect`.
 
 ---
 
+## Librerías
+
+Una app no puede cargar scripts de ningún sitio: ni CDN ni ficheros sueltos. La
+excepción son unas pocas librerías que **sirve el propio Palet**, con la versión
+fijada. Se cargan con su ruta relativa exacta, que empieza por `/libs/`; cualquier
+otra URL la bloquea el navegador y la app se queda en blanco.
+
+| Librería | Para qué | Cómo se carga |
+|---|---|---|
+| three 0.186.1 | 3D con WebGL | `import * as THREE from "/libs/three@0.186.1/three.module.js"` en un `<script type="module">` |
+| chart.js 4.5.1 | Gráficas | `<script src="/libs/chart.js@4.5.1/chart.umd.min.js"></script>` → `Chart` |
+| d3 7.9.0 | Visualización a medida | `<script src="/libs/d3@7.9.0/d3.min.js"></script>` → `d3` |
+| dayjs 1.11.23 | Fechas | `<script src="/libs/dayjs@1.11.23/dayjs.min.js"></script>` → `dayjs` |
+| marked 18.0.14 | Markdown a HTML | `<script src="/libs/marked@18.0.14/marked.umd.js"></script>` → `marked` |
+
+La lista al día, con ejemplos, está en `https://app.palet.cloud/api/libs` y en la
+tool `list_libraries` del conector. Si no ves la que necesitas, escríbela a mano:
+las añade Palet, no cada app.
+
+Por qué no se abre cualquier CDN: cargar un script ya es mandar una petición a
+otro servidor, y la URL de esa petición serviría para sacar datos de la app.
+
+---
+
 ## Límites
 
 Se aplican en el servidor, que es el único sitio donde tiene sentido: el
@@ -196,7 +221,8 @@ array dentro, no cincuenta claves. Va más rápido, gasta menos cupo y ocupa men
   caras, no para publicar a mil desconocidos.
 - **No guarda secretos en la app.** Cualquier clave escrita en el HTML es
   visible.
-- **No corre binarios ni instala paquetes.** Un HTML y ya.
+- **No corre binarios ni instala paquetes.** Un HTML y, como mucho, alguna de las
+  librerías aprobadas.
 
 ---
 
