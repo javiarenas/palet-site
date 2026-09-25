@@ -1,6 +1,6 @@
 # Palet — documentación para construir mini-apps
 
-**Versión 1.0.4** · actualizado el 25 de septiembre de 2026 · https://palet.cloud/docs.html
+**Versión 1.0.5** · actualizado el 26 de septiembre de 2026 · https://palet.cloud/docs.html
 
 Esto está escrito para que lo lea una IA que va a construir una app de Palet.
 Si eres una persona, la versión con formato está en https://palet.cloud/docs.html
@@ -178,6 +178,24 @@ otra URL la bloquea el navegador y la app se queda en blanco.
 | d3 7.9.0 | Visualización a medida | `<script src="/libs/d3@7.9.0/d3.min.js"></script>` → `d3` |
 | dayjs 1.11.23 | Fechas | `<script src="/libs/dayjs@1.11.23/dayjs.min.js"></script>` → `dayjs` |
 | marked 18.0.14 | Markdown a HTML | `<script src="/libs/marked@18.0.14/marked.umd.js"></script>` → `marked` |
+| tesseract.js 7.0.0 | OCR en el dispositivo, sin red ni IA | `<script src="/libs/tesseract.js@7.0.0/tesseract.min.js"></script>` → `Tesseract` |
+
+**OCR.** Lee el texto de una imagen o captura en el propio dispositivo: español
+(`spa`), inglés (`eng`) o los dos (`"spa+eng"`). La primera vez descarga unos 3 MB;
+después va en caché. Pasa las rutas absolutas y sin caché propia, porque el worker
+nace de un blob y la app no tiene IndexedDB:
+
+```js
+const base = new URL("/libs/tesseract.js@7.0.0/", location.href).href
+const worker = await Tesseract.createWorker("spa", 1, {
+  workerPath: base + "worker.min.js", corePath: base, langPath: base, cacheMethod: "none",
+})
+const { data } = await worker.recognize(imagen) // File, Blob, <img>, <canvas> o data URL
+await worker.terminate()
+```
+
+Devuelve **texto, no datos**: los campos se sacan con expresiones regulares, y
+conviene enseñar lo leído para que la persona lo confirme antes de guardarlo.
 
 La lista al día, con ejemplos, está en `https://app.palet.cloud/api/libs` y en la
 tool `list_libraries` del conector. Si no ves la que necesitas, escríbela a mano:

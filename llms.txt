@@ -6,7 +6,7 @@
 > pantalla de inicio y la posibilidad de compartirla con otras personas. El
 > servidor nunca ejecuta el código de las apps.
 
-Versión de la plataforma: 1.0.4 (25 de septiembre de 2026)
+Versión de la plataforma: 1.0.5 (26 de septiembre de 2026)
 
 Si vas a construir una app de Palet, lee primero la documentación técnica: está
 en Markdown, es corta y contiene todo el SDK con sus reglas.
@@ -36,7 +36,7 @@ en Markdown, es corta y contiene todo el SDK con sus reglas.
 
 - Una app es **un HTML autocontenido**, sin build. Lo único externo que puede
   cargar son las librerías aprobadas que sirve Palet en `/libs/` (three,
-  chart.js, d3, dayjs, marked): ver la sección «Librerías» de docs.md.
+  chart.js, d3, dayjs, marked y tesseract.js para OCR): ver la sección «Librerías» de docs.md.
 - **El servidor no ejecuta lógica**: guarda claves y valores JSON, y comprueba
   permisos. Con la app cerrada no ocurre nada.
 - Hay **dos almacenes**: `palet.storage` (del grupo, lo ven todos los que
