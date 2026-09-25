@@ -1,6 +1,6 @@
 # Palet — documentación para construir mini-apps
 
-**Versión 1.0.5** · actualizado el 26 de septiembre de 2026 · https://palet.cloud/docs.html
+**Versión 1.0.6** · actualizado el 26 de septiembre de 2026 · https://palet.cloud/docs.html
 
 Esto está escrito para que lo lea una IA que va a construir una app de Palet.
 Si eres una persona, la versión con formato está en https://palet.cloud/docs.html
@@ -142,6 +142,29 @@ Si la app se va a compartir, declara qué puede hacer al crearla:
 Entonces se usa la clave de quien creó la app y funciona para todos, **pero solo
 para esas rutas**. Sin declararlo, cada persona necesita dar de alta la suya.
 Cada regla es `MÉTODO /ruta`; el `*` final abre lo que cuelgue. Pide lo mínimo.
+
+**IA dentro de la app: OpenRouter.** Se conecta con un clic en Ajustes →
+Integraciones → Conectar OpenRouter, sin copiar claves, y cada persona paga su uso
+en OpenRouter (hay modelos gratuitos con límite diario). Da acceso a Gemini, GPT,
+Claude, Llama y cientos más con el formato de OpenAI:
+
+```js
+const r = await palet.connect('openrouter').fetch('/chat/completions', {
+  method: 'POST',
+  body: {
+    model: 'google/gemini-2.5-flash-lite', // barato y lee imágenes; 'google/gemma-4-31b-it:free' es gratis
+    messages: [{ role: 'user', content: [
+      { type: 'text', text: 'Saca importe, cuota y resultado en JSON' },
+      { type: 'image_url', image_url: { url: dataURL } },
+    ] }],
+  },
+})
+const texto = JSON.parse(r.body).choices[0].message.content // body llega como texto
+```
+
+Si solo hay que leer el texto de una imagen, antes que la IA prueba el OCR en el
+dispositivo (tesseract.js, en las [librerías](#librerías)): es gratis y no sale del
+teléfono.
 
 ### `palet.openUrl(url)`
 

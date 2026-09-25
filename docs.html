@@ -48,7 +48,7 @@
 
     <h1>Documentación</h1>
     <p class="doc-version">
-      <strong>Versión 1.0.5</strong> · actualizado el 26 de septiembre de 2026 ·
+      <strong>Versión 1.0.6</strong> · actualizado el 26 de septiembre de 2026 ·
       <a href="docs.md">en Markdown</a> ·
       <a href="diseno.html">la justificación artística</a>
     </p>
@@ -229,6 +229,19 @@ palet.notify('Ya está', 'Lista terminada', { to: '*' })   // a todos menos a ti
 })</code></pre>
       <p>La petición sale del servidor de Palet, que le añade el secreto. Así funcionan
       también las APIs que no permiten CORS.</p>
+
+      <h3>IA dentro de la app: OpenRouter</h3>
+      <p>Se conecta con un clic en Ajustes → Integraciones → <strong>Conectar
+      OpenRouter</strong>, sin copiar claves, y cada persona paga su uso en OpenRouter (hay
+      modelos gratuitos con límite diario). Da acceso a Gemini, GPT, Claude y cientos de
+      modelos más con el formato de OpenAI:</p>
+      <pre><code>const r = await palet.connect('openrouter').fetch('/chat/completions', {
+  method: 'POST',
+  body: { model: 'google/gemini-2.5-flash-lite', messages }
+})
+const texto = JSON.parse(r.body).choices[0].message.content</code></pre>
+      <p class="doc-nota">Si solo hay que leer el texto de una imagen, antes que la IA
+      prueba el OCR en el dispositivo: es gratis y no sale del teléfono.</p>
 
       <h3>Cuando la app se comparte</h3>
       <p>La clave es de quien la dio de alta. Si compartes una app que usa una integración,
